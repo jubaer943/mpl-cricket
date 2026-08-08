@@ -1,0 +1,154 @@
+  html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    .font-display {
+      font-family: 'Baloo Da 2', sans-serif;
+    }
+
+    /* ---- stitched seam divider (signature motif) ---- */
+    .seam {
+      height: 22px;
+      background-image:
+        repeating-linear-gradient(45deg, currentColor 0 3px, transparent 3px 13px),
+        repeating-linear-gradient(-45deg, currentColor 0 3px, transparent 3px 13px);
+      opacity: .55;
+    }
+
+    .seam-maroon {
+      color: #A32B1F;
+    }
+
+    .seam-gold {
+      color: #E8A33D;
+    }
+
+    /* ---- scrollbar ---- */
+    ::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #E8A33D;
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* ---- focus visibility ---- */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid #E8A33D;
+      outline-offset: 2px;
+    }
+
+    /* ---- entrance animation ---- */
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .rise {
+      animation: riseIn .7s ease-out both;
+    }
+
+    .rise-1 {
+      animation-delay: .05s;
+    }
+
+    .rise-2 {
+      animation-delay: .15s;
+    }
+
+    .rise-3 {
+      animation-delay: .25s;
+    }
+
+    .rise-4 {
+      animation-delay: .35s;
+    }
+
+    /* ---- live pulse dot ---- */
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .25;
+      }
+    }
+
+    .pulse-dot {
+      animation: pulse-dot 1.2s ease-in-out infinite;
+    }
+
+    /* ---- marquee ticker ---- */
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: marquee 26s linear infinite;
+    }
+
+    /* ---- carousel ---- */
+    #carouselTrack {
+      transition: transform .6s cubic-bezier(.65, 0, .35, 1);
+    }
+
+    /* ---- modal ---- */
+    .modal-overlay {
+      background: rgba(10, 32, 24, .72);
+      backdrop-filter: blur(3px);
+    }
+
+    /* ---- tabs ---- */
+    .tab-btn {
+      transition: all .15s ease;
+    }
+
+    .tab-btn.active {
+      background: #E8A33D;
+      color: #0F2E22;
+    }
+
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .rise,
+      .marquee-track,
+      .pulse-dot {
+        animation: none !important;
+      }
+    }
