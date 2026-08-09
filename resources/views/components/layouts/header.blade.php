@@ -11,7 +11,7 @@
           </a>
 
           <nav class="hidden lg:flex items-center gap-5 text-cream/90 text-[15px] font-medium">
-              <a href="#home" class="hover:text-gold transition">হোম</a>
+              <a href="{{ route('home') }}" class="hover:text-gold transition">হোম</a>
               <a href="#teams" class="hover:text-gold transition">দলসমূহ</a>
               <a href="#playersPreview" class="hover:text-gold transition">খেলোয়াড়</a>
               <a href="#matches" class="hover:text-gold transition">ম্যাচ</a>
@@ -23,12 +23,12 @@
           </nav>
 
           <div class="hidden lg:flex items-center gap-3">
-              <button onclick="openModal('teamModal')"
+              <a href="{{ route('team.register') }}"
                   class="px-4 py-2 rounded-full text-sm font-semibold bg-transparent border border-gold text-gold hover:bg-gold hover:text-pitchdark transition">দল
-                  নিবন্ধন</button>
-              <button onclick="openModal('playerModal')"
+                  নিবন্ধন</a>
+              <a href="{{ route('player.register') }}"
                   class="px-4 py-2 rounded-full text-sm font-semibold bg-gold text-pitchdark hover:bg-goldlight transition">খেলোয়াড়
-                  নিবন্ধন</button>
+                  নিবন্ধন</a>
           </div>
 
           <button id="menuBtn" onclick="toggleMenu()" class="lg:hidden text-cream text-2xl"
@@ -38,7 +38,7 @@
       <!-- mobile menu -->
       <div id="mobileMenu" class="hidden lg:hidden bg-pitchdark border-t border-gold/20 px-4 pb-4">
           <nav class="flex flex-col gap-3 pt-3 text-cream/90 text-[15px] font-medium">
-              <a href="#home" onclick="toggleMenu()" class="hover:text-gold">হোম</a>
+              <a href="{{ route('home') }}" onclick="toggleMenu()" class="hover:text-gold">হোম</a>
               <a href="#teams" onclick="toggleMenu()" class="hover:text-gold">দলসমূহ</a>
               <a href="#playersPreview" onclick="toggleMenu()" class="hover:text-gold">খেলোয়াড়</a>
               <a href="#matches" onclick="toggleMenu()" class="hover:text-gold">ম্যাচ</a>

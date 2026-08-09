@@ -13,17 +13,24 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
+
+            // Basic Team Info
             $table->string('name');
             $table->string('logo')->nullable();
-            $table->string('owner_name')->nullable();
-            $table->string('contact_number')->nullable();
+
+            // Owner Info
+            $table->string('owner_name');
+            $table->string('contact_number', 20)->nullable();
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
-            $table->string('district')->nullable();
-            $table->string('thana')->nullable();
-            $table->string('age')->nullable();
+            $table->unsignedTinyInteger('age')->nullable(); // age-এর জন্য string এর চেয়ে tinyInteger শ্রেয়
+            $table->string('nationality')->default('বাংলাদেশী');
+
+            // Location Info
             $table->string('village')->nullable();
-            $table->string('nationality')->nullable();
+            $table->string('post_office')->nullable(); // আগের ফর্মে পোস্ট অফিস ছিল, তাই যোগ করা হলো
+            $table->string('thana')->nullable();
+            $table->string('district')->nullable();
             $table->timestamps();
         });
     }
