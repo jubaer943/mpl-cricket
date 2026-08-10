@@ -20,7 +20,7 @@
                     <th class="px-4 py-3 text-center font-display font-600">নেট রান রেট</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-ink/10">
+            {{-- <tbody class="divide-y divide-ink/10">
                 <tr class="border-l-4 border-gold bg-goldlight/15">
                     <td class="px-4 py-3 font-semibold">১</td>
                     <td class="px-4 py-3 font-medium">মজমপুর টাইগার্স</td>
@@ -93,7 +93,7 @@
                     <td class="px-4 py-3 text-center font-bold">২</td>
                     <td class="px-4 py-3 text-center">-১.০৫</td>
                 </tr>
-            </tbody>
+            </tbody> --}}
         </table>
     </div>
     <p class="text-sm text-ink/50 mt-3">🟡 সোনালী চিহ্নিত দলগুলো সেমিফাইনালে উত্তীর্ণ</p>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,4 +14,14 @@ Route::prefix('registration')->group(function () {
     Route::get('/player', function () {
         return view('player-registration');
     })->name('player.register');
+
+    Route::post('player', [PlayerController::class, 'store'])->name('player.store');
 });
+
+Route::get('commitee/mpl', function () {
+    return view("commitee-mpl");
+})->name('commitee.mpl');
+
+Route::get('commitee', function () {
+    return view("commitee");
+})->name('commitee');

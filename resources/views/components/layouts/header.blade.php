@@ -3,7 +3,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           <a href="#home" class="flex items-center gap-2.5 shrink-0">
               <span
-                  class="w-10 h-10 rounded-full bg-gold flex items-center justify-center text-pitchdark text-xl font-display font-800">🏏</span>
+                  class="w-10 h-10 rounded-full bg-gold flex items-center justify-center text-pitchdark text-xl font-display font-800">🤝</span>
               <span class="leading-tight">
                   <span class="block font-display font-700 text-cream text-lg -mb-1">একতা যুব সংঘ</span>
                   <span class="block font-display font-800 text-gold text-sm tracking-widest">MPL</span>
@@ -18,8 +18,9 @@
               <a href="#scoreboard" class="hover:text-gold transition">স্কোরবোর্ড</a>
               <a href="#points" class="hover:text-gold transition">পয়েন্ট টেবিল</a>
               <a href="#fixtures" class="hover:text-gold transition">ফিক্সচার</a>
-              <a href="#tournaments" class="hover:text-gold transition">টুর্নামেন্ট</a>
-              <a href="#committee" class="hover:text-gold transition">কমিটি</a>
+              <a href="{{ route('commitee') }}" class="hover:text-gold transition">একতা যব সংঘ পরিষদ
+              </a>
+              <a href="{{ route('commitee.mpl') }}" class="hover:text-gold transition">MPL পরিচালনা পষর্দ</a>
           </nav>
 
           <div class="hidden lg:flex items-center gap-3">
@@ -46,14 +47,16 @@
               <a href="#points" onclick="toggleMenu()" class="hover:text-gold">পয়েন্ট টেবিল</a>
               <a href="#fixtures" onclick="toggleMenu()" class="hover:text-gold">ফিক্সচার</a>
               <a href="#tournaments" onclick="toggleMenu()" class="hover:text-gold">টুর্নামেন্ট</a>
-              <a href="#committee" onclick="toggleMenu()" class="hover:text-gold">কমিটি</a>
+              <a href="{{ route('commitee') }}" onclick="toggleMenu()" class="hover:text-gold">একতা যব সংঘ পরিষদ</a>
+              <a href="{{ route('commitee.mpl') }}" onclick="toggleMenu()" class="hover:text-gold">MPL পরিচালনা
+                  পষর্দ</a>
               <div class="flex gap-2 pt-2">
-                  <button onclick="openModal('teamModal')"
-                      class="flex-1 px-4 py-2 rounded-full text-sm font-semibold border border-gold text-gold">দল
-                      নিবন্ধন</button>
-                  <button onclick="openModal('playerModal')"
-                      class="flex-1 px-4 py-2 rounded-full text-sm font-semibold bg-gold text-pitchdark">খেলোয়াড়
-                      নিবন্ধন</button>
+                  <a href="{{ route('team.register') }}"
+                      class="px-4 py-2 rounded-full text-sm font-semibold bg-transparent border border-gold text-gold hover:bg-gold hover:text-pitchdark transition">দল
+                      নিবন্ধন</a>
+                  <a href="{{ route('player.register') }}"
+                      class="px-4 py-2 rounded-full text-sm font-semibold bg-gold text-pitchdark hover:bg-goldlight transition">খেলোয়াড়
+                      নিবন্ধন</a>
               </div>
           </nav>
       </div>

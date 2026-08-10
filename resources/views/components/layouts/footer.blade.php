@@ -2,12 +2,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 grid sm:grid-cols-3 gap-8 mb-10">
         <div>
             <div class="flex items-center gap-2.5 mb-3">
-                <span
-                    class="w-9 h-9 rounded-full bg-gold flex items-center justify-center text-pitchdark text-lg font-800">🏏</span>
-                <span class="font-display font-700 text-cream">একতা যুব সংঘ MPL</span>
+                <img src="{{ asset('img/img_6.jpg') }}" alt="একতা যুব সংঘ MPL"
+                    class="w-20 h-20 object-contain rounded-full">
+                <img src="{{ asset('img/logo.jpg') }}" alt="একতা যুব সংঘ MPL"
+                    class="w-20 h-20 object-contain rounded-full">
+                {{-- <span class="font-display font-700 text-cream">একতা যুব সংঘ MPL</span> --}}
             </div>
-            <p class="text-sm">মজমপুর প্রিমিয়ার লীগ — এলাকার তরুণদের ক্রিকেট প্রতিভা বিকাশের একটি উদ্যোগ। প্রতি বছর যুবো
-                সংঘের আয়োজনে অনুষ্ঠিত হয়।</p>
+            <p class="text-sm">মজমপুর প্রিমিয়ার ক্রিকেট লীগ — মাঠে ঢুকবে তরুণ প্রাণ, মাদক হবে খানখান।</p>
         </div>
         <div>
             <h4 class="font-display font-600 text-cream mb-3">দ্রুত লিংক</h4>
@@ -17,15 +18,17 @@
                         তালিকা</a></li>
                 <li><a href="#points" class="hover:text-gold">পয়েন্ট টেবিল</a></li>
                 <li><a href="#fixtures" class="hover:text-gold">ফিক্সচার</a></li>
-                <li><a href="#committee" class="hover:text-gold">কমিটি</a></li>
+                <li><a href="#committee" class="hover:text-gold">একতা যব সংঘ পরিষদ</a></li>
+                <li><a href="#committee" class="hover:text-gold">MPL পরিচালনা
+                        পষর্দ</a></li>
             </ul>
         </div>
         <div>
             <h4 class="font-display font-600 text-cream mb-3">যোগাযোগ</h4>
             <ul class="space-y-2 text-sm">
-                <li>📍 মজমপুর, রাজশাহী বিভাগ</li>
-                <li>📞 ০১৭xx-xxxxxx</li>
-                <li>✉️ jubosongho.mpl@example.com</li>
+                <li>📍 মজমপুর, খুলনা বিভাগ</li>
+                <li>📞 ০১৭২৯৩৭৭৮৭৮</li>
+                <li>✉️ javedomor07@gmail.com</li>
             </ul>
         </div>
     </div>
