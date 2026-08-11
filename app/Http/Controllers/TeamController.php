@@ -13,7 +13,7 @@ class TeamController extends Controller
     }
     public function store(Request $request)
     {
-        // ১. ভ্যালিডেশন
+
         $validated = $request->validate([
             'team_name'      => 'required|string|max:255',
             'team_logo'      => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
@@ -26,13 +26,11 @@ class TeamController extends Controller
             'terms'          => 'accepted',
         ]);
 
-        // ২. ইমেজ আপলোড
         $logoPath = null;
         if ($request->hasFile('team_logo')) {
             $logoPath = $request->file('team_logo')->store('team_logos', 'public');
         }
 
-        // ৩. ডাটাবেজ কলামের নামের সাথে হুবহু মিলিয়ে ডাটা ইনসার্ট
         Team::create([
             'name'          => $validated['team_name'],
             'logo'          => $logoPath,

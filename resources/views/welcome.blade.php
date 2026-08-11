@@ -4,7 +4,7 @@
         <x-partials.hero />
         <x-partials.gallery />
         <x-partials.registration-promt />
-        <x-partials.team />
+        <x-partials.team :teams="$teams" />
         <x-partials.top-performer />
         <x-partials.matches />
         <x-partials.point-table />

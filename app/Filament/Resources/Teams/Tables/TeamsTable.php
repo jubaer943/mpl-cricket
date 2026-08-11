@@ -16,11 +16,10 @@ class TeamsTable
     {
         return $table
             ->columns([
-                // লোগো সুন্দর ও গোলাকারভাবে দেখানোর জন্য ImageColumn
                 ImageColumn::make('logo')
                     ->label('Team Logo')
-                    ->circular() // ছবি গোলাকার করবে (প্রয়োজন না হলে কেটে দিতে পারেন)
-                    ->disk('public'), // আপনার ফাইলের ডিস্কের নাম দিন (ডিফল্ট: public)
+                    ->circular()
+                    ->disk('public'),
 
                 TextColumn::make('name')
                     ->searchable()

@@ -23,12 +23,12 @@
             একসাথে খেলি, একসাথে গড়ি সুস্থ শরীর সুন্দর সমাজ
         </p>
         <div class="rise rise-3 flex flex-wrap gap-4 justify-center mt-8">
-            <button onclick="openModal('teamModal')"
+            <a href="{{ route('team.register')}}"
                 class="px-7 py-3 rounded-full bg-gold text-pitchdark font-bold hover:bg-goldlight transition shadow-lg shadow-black/20">দল
-                নিবন্ধন করুন</button>
-            <button onclick="openModal('playerModal')"
+                নিবন্ধন করুন</a>
+            <a href="{{ route('player.register')}}"
                 class="px-7 py-3 rounded-full border-2 border-cream/40 text-cream font-bold hover:border-gold hover:text-gold transition">খেলোয়াড়
-                নিবন্ধন করুন</button>
+                নিবন্ধন করুন</a>
         </div>
 
         <!-- stat tiles -->
