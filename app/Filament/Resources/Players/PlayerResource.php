@@ -11,9 +11,9 @@ use App\Filament\Resources\Players\Schemas\PlayerInfolist;
 use App\Filament\Resources\Players\Tables\PlayersTable;
 use App\Models\Player;
 use BackedEnum;
+use Filament\Support\Icons\Heroicon;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
 class PlayerResource extends Resource

@@ -7,7 +7,9 @@
         <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">ম্যাচ বিবরণ</h2>
     </div>
 
-    <div id="matchesPreviewGrid" class="grid md:grid-cols-2 gap-5"></div>
+    <div id="matchesPreviewGrid" class="grid md:grid-cols-2 gap-5">
+
+    </div>
 
     <div class="text-center mt-8">
         <button onclick="go('matches')"

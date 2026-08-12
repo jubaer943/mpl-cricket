@@ -7,6 +7,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\FileUpload;
 
 class PlayerForm
 {
@@ -14,7 +15,10 @@ class PlayerForm
     {
         return $schema
             ->components([
-                TextInput::make('photo')
+                FileUpload::make('photo')
+                    ->image()
+                    ->disk('public')
+                    ->directory('players')
                     ->required(),
                 TextInput::make('name')
                     ->required(),

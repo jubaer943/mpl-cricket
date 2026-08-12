@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PublicAuctionController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -24,3 +25,10 @@ Route::get('commitee/mpl', function () {
 Route::get('commitee', function () {
     return view("commitee");
 })->name('commitee');
+
+
+
+
+
+Route::get('/live-draft', [PublicAuctionController::class, 'index']);
+Route::get('/api/live-draft-data', [PublicAuctionController::class, 'getLiveAuctionData']);

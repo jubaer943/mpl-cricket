@@ -7,21 +7,23 @@ use App\Models\Player;
 use App\Models\Team;
 use Filament\Pages\Page;
 use Filament\Notifications\Notification;
+use BackedEnum;
+use Filament\Support\Icons\Heroicon;
 
 class PlayerAuction extends Page
 {
-    // protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-line';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
     protected static ?string $navigationLabel = 'প্লেয়ার নিলাম (Auction)';
-    // protected static string $view = 'filament.pages.player-auction';
+    protected string $view = 'filament.pages.player-auction';
 
     public $selectedCategoryId = null;
     public $currentPlayer = null;
     public $currentBidPrice = 0;
-    public $selectedTeamId = null;
+    public $biddingTeamId = null;
+    public $lastAuctionState = null; // sold or unsold state tracking
 
-    public function mount()
+    public function mount(): void
     {
-        // ডিফল্টভাবে প্রথম ক্যাটাগরি লোড হবে
         $firstCategory = Category::first();
         if ($firstCategory) {
             $this->selectedCategoryId = $firstCategory->id;
@@ -29,78 +31,100 @@ class PlayerAuction extends Page
         }
     }
 
-    // ক্যাটাগরি পরিবর্তনের সাথে সাথে প্লেয়ার লোড
-    public function updatedSelectedCategoryId()
+    public function updatedSelectedCategoryId(): void
     {
         $this->loadNextPlayer();
     }
 
-    // নির্দিষ্ট ক্যাটাগরির পরবর্তী Available প্লেয়ার খুঁজে বের করা
-    public function loadNextPlayer()
+    public function loadNextPlayer(): void
     {
-        $this->selectedTeamId = null;
+        $this->biddingTeamId = null;
+        $this->lastAuctionState = null;
 
         $this->currentPlayer = Player::where('category_id', $this->selectedCategoryId)
-            ->where('auction_status', 'available')
+            ->where('auction_status', 'bidding')
+            ->where('is_auction_active', true)
             ->first();
 
+        if (!$this->currentPlayer) {
+            $this->currentPlayer = Player::where('category_id', $this->selectedCategoryId)
+                ->where('auction_status', 'available')
+                ->first();
+        }
+
         if ($this->currentPlayer) {
-            // বেস প্রাইস ক্যাটাগরি থেকে নেওয়া হচ্ছে
             $this->currentBidPrice = $this->currentPlayer->category->base_price ?? 0;
+
+            Player::where('is_auction_active', true)->update(['is_auction_active' => false]);
+            $this->currentPlayer->update(['is_auction_active' => true]);
         } else {
+            Player::where('is_auction_active', true)->update(['is_auction_active' => false]);
             $this->currentBidPrice = 0;
         }
     }
 
-    // এক ক্লিকে নির্দিষ্ট বিড ইনক্রিমেন্ট করা
-    public function incrementBid()
+    public function placeBid($teamId): void
     {
-        if (!$this->currentPlayer) return;
+        if (!$this->currentPlayer || $this->lastAuctionState) return;
 
+        $team = Team::find($teamId);
+        if ($team->players()->count() >= 15) {
+            Notification::make()->title("{$team->name} টিমে ১৫ জন প্লেয়ার পূর্ণ!")->warning()->send();
+            return;
+        }
+
+        $this->biddingTeamId = $teamId;
         $increment = $this->currentPlayer->category->bid_increment ?? 100;
-        $this->currentBidPrice += $increment;
+
+        if ($this->currentPlayer->sold_price > 0) {
+            $this->currentBidPrice += $increment;
+        } else {
+            if ($this->currentBidPrice == 0) {
+                $this->currentBidPrice = $this->currentPlayer->category->base_price ?? 0;
+            }
+        }
+
+        $this->currentPlayer->update([
+            'team_id' => $this->biddingTeamId,
+            'sold_price' => $this->currentBidPrice,
+            'auction_status' => 'bidding'
+        ]);
     }
 
-    // টিমের কাছে প্লেয়ার Sold করা (সর্বোচ্চ ১৫ জন স্কোয়াড লিমিট সহ)
-    public function sellPlayer()
+    public function sellPlayer(): void
     {
-        if (!$this->currentPlayer || !$this->selectedTeamId) {
-            Notification::make()->title('অনুগ্রহ করে একটি টিম নির্বাচন করুন!')->danger()->send();
+        if (!$this->currentPlayer || !$this->biddingTeamId) {
+            Notification::make()->title('বিড করার জন্য কোনো টিম সিলেক্ট করা হয়নি!')->danger()->send();
             return;
         }
 
-        $team = Team::find($this->selectedTeamId);
+        $team = Team::find($this->biddingTeamId);
 
-        // টিম স্কোয়াড লিমিট (১৫ জন) চেক
-        if ($team->players()->count() >= 15) {
-            Notification::make()->title("{$team->name} ইতিমধ্যে ১৫ জন প্লেয়ার নিয়ে নিয়েছে!")->warning()->send();
-            return;
-        }
-
-        // প্লেয়ার Sold হিসেবে আপডেট
         $this->currentPlayer->update([
-            'team_id' => $this->selectedTeamId,
+            'team_id' => $this->biddingTeamId,
             'sold_price' => $this->currentBidPrice,
             'auction_status' => 'sold',
+            'is_auction_active' => true, // স্ক্রিনে স্টেট দেখানোর জন্য active রাখা হয়েছে
         ]);
 
-        Notification::make()->title("{$this->currentPlayer->name} কে {$team->name} কিনে নিয়েছে!")->success()->send();
+        $this->lastAuctionState = 'sold';
 
-        // অটোমেটিক পরের প্লেয়ার লোড করা
-        $this->loadNextPlayer();
+        Notification::make()->title("{$this->currentPlayer->name} কে {$team->name} কিনে নিয়েছে!")->success()->send();
     }
 
-    // প্লেয়ার Unsold ঘোষণা করা
-    public function markUnsold()
+    public function markUnsold(): void
     {
         if (!$this->currentPlayer) return;
 
         $this->currentPlayer->update([
+            'team_id' => null,
+            'sold_price' => 0,
             'auction_status' => 'unsold',
+            'is_auction_active' => true,
         ]);
 
-        Notification::make()->title("{$this->currentPlayer->name} Unsold ঘোষণা করা হলো")->warning()->send();
+        $this->lastAuctionState = 'unsold';
 
-        $this->loadNextPlayer();
+        Notification::make()->title("{$this->currentPlayer->name} Unsold ঘোষণা করা হলো")->warning()->send();
     }
 }
