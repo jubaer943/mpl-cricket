@@ -27,7 +27,6 @@
             <h4 class="font-display font-600 text-cream mb-3">যোগাযোগ</h4>
             <ul class="space-y-2 text-sm">
                 <li>📍 মজমপুর, খুলনা বিভাগ</li>
-                <li>📞 ০১৭২৯৩৭৭৮৭৮</li>
                 <li>✉️ javedomor07@gmail.com</li>
             </ul>
         </div>

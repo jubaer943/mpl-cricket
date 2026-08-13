@@ -8,6 +8,7 @@
         <x-partials.top-performer :players="$players" />
         <x-partials.matches />
         <x-partials.point-table />
+        <x-partials.tournament :tournaments="$tournaments" />
         <x-partials.fixture />
         <x-partials.committee />
     </div>

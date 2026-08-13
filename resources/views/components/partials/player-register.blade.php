@@ -38,8 +38,8 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <!-- Player Photo -->
                         <div class="md:col-span-2">
-                            <label class="block text-sm font-semibold text-ink/80 mb-1.5">প্লেয়ারের ছবি (Passport Size
-                                Photo) <span class="text-red-500">*</span></label>
+                            <label class="block text-sm font-semibold text-ink/80 mb-1.5">প্লেয়ারের ছবি (Photo Size
+                                2MB) <span class="text-red-500">*</span></label>
                             <input type="file" name="photo" accept="image/*"
                                 class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pitch file:text-cream hover:file:bg-pitchdark transition cursor-pointer">
                             @error('photo')
@@ -265,7 +265,7 @@
                                     placeholder="পূর্বের দলের নাম"
                                     class="w-full rounded-xl border border-ink/15 px-4 py-3 bg-white focus:border-gold outline-none transition">
                             </div>
-                            <div>
+                            {{-- <div>
                                 <label class="block text-sm font-semibold text-ink/80 mb-1.5">গ্রেড (Grade) </label>
                                 <select name="grade"
                                     class="w-full rounded-xl border border-ink/15 px-4 py-3 bg-white focus:border-gold outline-none transition">
@@ -287,7 +287,7 @@
                                 <input type="number" name="base_price" value="{{ old('base_price') }}"
                                     placeholder="যেমন: ৫০০০"
                                     class="w-full rounded-xl border border-ink/15 px-4 py-3 bg-white focus:border-gold outline-none transition">
-                            </div>
+                            </div> --}}
                         </div>
 
                         <!-- Added Optional Note Field -->

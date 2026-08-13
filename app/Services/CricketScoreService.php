@@ -12,15 +12,13 @@ class CricketScoreService
     public function recordBall(array $data): BallByBall
     {
         return DB::transaction(function () use ($data) {
-            // ১. এক্সট্রা রানের অটো হিসাব
+            // ওয়াইড/নো বল হলে অটো ১ রান
             if (in_array($data['extra_type'], ['wide', 'no_ball'])) {
                 $data['extra_runs'] = max(1, $data['extra_runs'] ?? 1);
             }
 
-            // ২. বল রেকর্ড তৈরি
             $ball = BallByBall::create($data);
 
-            // ৩. স্ট্যাটাস অটো আপডেট
             $this->updatePlayerStats($ball);
             $this->updateFixtureSummary($ball->fixture_id, $ball->innings_number);
 
@@ -66,7 +64,6 @@ class CricketScoreService
             $bowlerStat->increment('wickets_taken');
         }
 
-        // বোলারের ওভার হিসাব
         $legalBalls = BallByBall::where('fixture_id', $ball->fixture_id)
             ->where('bowler_id', $ball->bowler_id)
             ->whereNotIn('extra_type', ['wide', 'no_ball'])
@@ -77,7 +74,7 @@ class CricketScoreService
         $bowlerStat->update(['overs_bowled' => "{$overs}.{$balls}"]);
     }
 
-    private function updateFixtureSummary(int $fixtureId, int $inningsNumber): void
+    public function updateFixtureSummary(int $fixtureId, int $inningsNumber): void
     {
         $fixture = Fixture::findOrFail($fixtureId);
 
@@ -95,16 +92,39 @@ class CricketScoreService
         $formattedScore = "{$totalRuns}/{$wickets}";
         $formattedOvers = "{$overs}.{$remainingBalls}";
 
-        if ($inningsNumber == 1) {
-            $fixture->update([
-                'team_one_score' => $formattedScore,
-                'team_one_overs' => $formattedOvers,
-            ]);
+        // টসের ভিত্তিতে ১ম ইনিংসে কে ব্যাট করছে জানা
+        $battingFirstTeamId = $this->getBattingTeamId($fixture, 1);
+
+        if ($fixture->team_one_id == $battingFirstTeamId) {
+            if ($inningsNumber == 1) {
+                $fixture->update(['team_one_score' => $formattedScore, 'team_one_overs' => $formattedOvers]);
+            } else {
+                $fixture->update(['team_two_score' => $formattedScore, 'team_two_overs' => $formattedOvers]);
+            }
         } else {
-            $fixture->update([
-                'team_two_score' => $formattedScore,
-                'team_two_overs' => $formattedOvers,
-            ]);
+            if ($inningsNumber == 1) {
+                $fixture->update(['team_two_score' => $formattedScore, 'team_two_overs' => $formattedOvers]);
+            } else {
+                $fixture->update(['team_one_score' => $formattedScore, 'team_one_overs' => $formattedOvers]);
+            }
+        }
+    }
+
+    public function getBattingTeamId(Fixture $fixture, int $inningsNumber): int
+    {
+        $tossWinner = $fixture->toss_winner_team_id;
+        $tossDecision = $fixture->toss_decision; // 'bat' or 'bowl'
+
+        if (!$tossWinner || !$tossDecision) {
+            return $inningsNumber == 1 ? $fixture->team_one_id : $fixture->team_two_id;
+        }
+
+        $otherTeamId = ($tossWinner == $fixture->team_one_id) ? $fixture->team_two_id : $fixture->team_one_id;
+
+        if ($inningsNumber == 1) {
+            return ($tossDecision == 'bat') ? $tossWinner : $otherTeamId;
+        } else {
+            return ($tossDecision == 'bat') ? $otherTeamId : $tossWinner;
         }
     }
 }

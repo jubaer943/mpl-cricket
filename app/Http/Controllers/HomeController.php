@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Player;
 use App\Models\Team;
+use App\Models\Tournament;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,6 +22,11 @@ class HomeController extends Controller
             ->limit(10)
             ->get();
 
-        return view('welcome', compact('teams', 'players'));
+        $tournaments = Tournament::select('id', 'name', 'status', 'total_matches', 'champion_team_id')
+            ->withCount('teams')
+            ->latest()
+            ->get();
+
+        return view('welcome', compact('teams', 'players', 'tournaments'));
     }
 }
