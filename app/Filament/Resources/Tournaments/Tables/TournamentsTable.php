@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -15,29 +16,54 @@ class TournamentsTable
     {
         return $table
             ->columns([
+
                 TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('total_matches')
-                    ->numeric()
+                    ->label('Name')
+                    ->searchable()
                     ->sortable(),
-                TextColumn::make('completed_matches')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('champion_team_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('runner_up_team_id')
-                    ->numeric()
-                    ->sortable(),
-                IconColumn::make('is_active')
-                    ->boolean(),
+
                 TextColumn::make('status')
-                    ->badge(),
+                    ->label('Status')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'upcoming' => 'warning',
+                        'running' => 'success',
+                        'completed' => 'gray',
+                        default => 'primary',
+                    }),
+
+                IconColumn::make('is_active')
+                    ->label('Active')
+                    ->boolean(),
+
+                TextColumn::make('total_matches')
+                    ->label('Total Matches')
+                    ->numeric()
+                    ->sortable(),
+
+                TextColumn::make('completed_matches')
+                    ->label('Completed Matches')
+                    ->numeric()
+                    ->sortable(),
+
+                // TextColumn::make('championTeam.name')
+                //     ->label('Champion')
+                //     ->placeholder('N/A')
+                //     ->sortable(),
+
+                // TextColumn::make('runnerUpTeam.name')
+                //     ->label('Runner Up')
+                //     ->placeholder('N/A')
+                //     ->sortable(),
+
                 TextColumn::make('created_at')
+                    ->label('Created At')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 TextColumn::make('updated_at')
+                    ->label('Updated At')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
