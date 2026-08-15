@@ -26,6 +26,8 @@ Route::get('commitee', function () {
     return view("commitee");
 })->name('commitee');
 
+Route::get('player/performance', [PlayerController::class, 'topPerformer'])->name('player.performance');
+
 
 
 

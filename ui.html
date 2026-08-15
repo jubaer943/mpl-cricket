@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>একতা যুব সংঘ MPL — মজমপুর প্রিমিয়ার লীগ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pitch: '#1F5C3F',
+                        pitchdark: '#0F2E22',
+                        pitchdeep: '#0A2018',
+                        gold: '#E8A33D',
+                        goldlight: '#F4C67A',
+                        cream: '#FBF3E1',
+                        creamdark: '#F1E6CB',
+                        maroon: '#A32B1F',
+                        ink: '#14251D',
+                    },
+                    fontFamily: {
+                        display: ['"Baloo Da 2"', 'sans-serif'],
+                        body: ['"Hind Siliguri"', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        .font-display {
+            font-family: 'Baloo Da 2', sans-serif;
+        }
+
+        /* ---- stitched seam divider (signature motif) ---- */
+        .seam {
+            height: 22px;
+            background-image:
+                repeating-linear-gradient(45deg, currentColor 0 3px, transparent 3px 13px),
+                repeating-linear-gradient(-45deg, currentColor 0 3px, transparent 3px 13px);
+            opacity: .55;
+        }
+
+        .seam-maroon {
+            color: #A32B1F;
+        }
+
+        .seam-gold {
+            color: #E8A33D;
+        }
+
+        /* ---- scrollbar ---- */
+        ::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #E8A33D;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* ---- focus visibility ---- */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid #E8A33D;
+            outline-offset: 2px;
+        }
+
+        /* ---- entrance animation ---- */
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .rise {
+            animation: riseIn .7s ease-out both;
+        }
+
+        .rise-1 {
+            animation-delay: .05s;
+        }
+
+        .rise-2 {
+            animation-delay: .15s;
+        }
+
+        .rise-3 {
+            animation-delay: .25s;
+        }
+
+        .rise-4 {
+            animation-delay: .35s;
+        }
+
+        /* ---- live pulse dot ---- */
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .25;
+            }
+        }
+
+        .pulse-dot {
+            animation: pulse-dot 1.2s ease-in-out infinite;
+        }
+
+        /* ---- marquee ticker ---- */
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            white-space: nowrap;
+            animation: marquee 26s linear infinite;
+        }
+
+        /* ---- carousel ---- */
+        #carouselTrack {
+            transition: transform .6s cubic-bezier(.65, 0, .35, 1);
+        }
+
+        /* ---- modal ---- */
+        .modal-overlay {
+            background: rgba(10, 32, 24, .72);
+            backdrop-filter: blur(3px);
+        }
+
+        /* ---- tabs ---- */
+        .tab-btn {
+            transition: all .15s ease;
+        }
+
+        .tab-btn.active {
+            background: #E8A33D;
+            color: #0F2E22;
+        }
+
+        /* reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .rise,
+            .marquee-track,
+            .pulse-dot {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-cream text-ink">
+
+    <!-- ============ LIVE TICKER ============ -->
+    <div class="bg-maroon text-cream text-sm py-1.5 overflow-hidden select-none">
+        <div class="marquee-track font-medium tracking-wide">
+            <span class="mx-6">🏏 আজকের খেলা: মজমপুর টাইগার্স বনাম উত্তরপাড়া সুপার কিংস — বিকেল ৩:০০, উপজেলা
+                স্টেডিয়াম</span>
+            <span class="mx-6">📢 দল ও খেলোয়াড় নিবন্ধন চলছে — শেষ তারিখ ২০ আগস্ট ২০২৬</span>
+            <span class="mx-6">🏆 MPL ২০২৬ মৌসুমে মোট ৮টি দল অংশ নিচ্ছে</span>
+            <span class="mx-6">🏏 আজকের খেলা: মজমপুর টাইগার্স বনাম উত্তরপাড়া সুপার কিংস — বিকেল ৩:০০, উপজেলা
+                স্টেডিয়াম</span>
+            <span class="mx-6">📢 দল ও খেলোয়াড় নিবন্ধন চলছে — শেষ তারিখ ২০ আগস্ট ২০২৬</span>
+            <span class="mx-6">🏆 MPL ২০২৬ মৌসুমে মোট ৮টি দল অংশ নিচ্ছে</span>
+        </div>
+    </div>
+
+    <!-- ============ HEADER / NAV ============ -->
+    <header class="sticky top-0 z-40 bg-pitchdark/95 backdrop-blur border-b border-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+            <a href="#home" class="flex items-center gap-2.5 shrink-0">
+                <span
+                    class="w-10 h-10 rounded-full bg-gold flex items-center justify-center text-pitchdark text-xl font-display font-800">🏏</span>
+                <span class="leading-tight">
+                    <span class="block font-display font-700 text-cream text-lg -mb-1">একতা যুব সংঘ</span>
+                    <span class="block font-display font-800 text-gold text-sm tracking-widest">MPL</span>
+                </span>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-5 text-cream/90 text-[15px] font-medium">
+                <a href="#home" class="hover:text-gold transition">হোম</a>
+                <a href="#teams" class="hover:text-gold transition">দলসমূহ</a>
+                <a href="#playersPreview" class="hover:text-gold transition">খেলোয়াড়</a>
+                <a href="#matches" class="hover:text-gold transition">ম্যাচ</a>
+                <a href="#scoreboard" class="hover:text-gold transition">স্কোরবোর্ড</a>
+                <a href="#points" class="hover:text-gold transition">পয়েন্ট টেবিল</a>
+                <a href="#fixtures" class="hover:text-gold transition">ফিক্সচার</a>
+                <a href="#tournaments" class="hover:text-gold transition">টুর্নামেন্ট</a>
+                <a href="#committee" class="hover:text-gold transition">কমিটি</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-3">
+                <button onclick="openModal('teamModal')"
+                    class="px-4 py-2 rounded-full text-sm font-semibold bg-transparent border border-gold text-gold hover:bg-gold hover:text-pitchdark transition">দল
+                    নিবন্ধন</button>
+                <button onclick="openModal('playerModal')"
+                    class="px-4 py-2 rounded-full text-sm font-semibold bg-gold text-pitchdark hover:bg-goldlight transition">খেলোয়াড়
+                    নিবন্ধন</button>
+            </div>
+
+            <button id="menuBtn" onclick="toggleMenu()" class="lg:hidden text-cream text-2xl"
+                aria-label="মেনু খুলুন">☰</button>
+        </div>
+
+        <!-- mobile menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-pitchdark border-t border-gold/20 px-4 pb-4">
+            <nav class="flex flex-col gap-3 pt-3 text-cream/90 text-[15px] font-medium">
+                <a href="#home" onclick="toggleMenu()" class="hover:text-gold">হোম</a>
+                <a href="#teams" onclick="toggleMenu()" class="hover:text-gold">দলসমূহ</a>
+                <a href="#playersPreview" onclick="toggleMenu()" class="hover:text-gold">খেলোয়াড়</a>
+                <a href="#matches" onclick="toggleMenu()" class="hover:text-gold">ম্যাচ</a>
+                <a href="#scoreboard" onclick="toggleMenu()" class="hover:text-gold">স্কোরবোর্ড</a>
+                <a href="#points" onclick="toggleMenu()" class="hover:text-gold">পয়েন্ট টেবিল</a>
+                <a href="#fixtures" onclick="toggleMenu()" class="hover:text-gold">ফিক্সচার</a>
+                <a href="#tournaments" onclick="toggleMenu()" class="hover:text-gold">টুর্নামেন্ট</a>
+                <a href="#committee" onclick="toggleMenu()" class="hover:text-gold">কমিটি</a>
+                <div class="flex gap-2 pt-2">
+                    <button onclick="openModal('teamModal')"
+                        class="flex-1 px-4 py-2 rounded-full text-sm font-semibold border border-gold text-gold">দল
+                        নিবন্ধন</button>
+                    <button onclick="openModal('playerModal')"
+                        class="flex-1 px-4 py-2 rounded-full text-sm font-semibold bg-gold text-pitchdark">খেলোয়াড়
+                        নিবন্ধন</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ======================================================= -->
+        <!-- =====================  HOME PAGE  ===================== -->
+        <!-- ======================================================= -->
+        <div id="page-home" class="page">
+
+            <!-- ============ HERO ============ -->
+            <section id="hero" class="relative bg-gradient-to-b from-pitchdark to-pitch overflow-hidden">
+                <div class="absolute inset-0 opacity-[0.07]"
+                    style="background-image: radial-gradient(circle, #FBF3E1 1.5px, transparent 1.5px); background-size: 22px 22px;">
+                </div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20 text-center">
+                    <h1 style="font-size:25px ;" class=" inline-block text-gold font-semibold ">একতা
+                        যুব
+                        সংঘ
+                        আয়োজিত</h1>
+                    <br>
+                    <p
+                        class="rise rise-1 inline-block text-gold font-semibold tracking-[0.25em] text-xs sm:text-sm mb-4">
+                        মঞ্জুরুল হক চৌধুরী রতনের অনুপ্রেরণায়</p>
+                    <h1 class="rise rise-2 font-display font-800 text-cream text-4xl sm:text-6xl leading-tight">
+                        মজমপুর প্রিমিয়ার ক্রিকেট লীগ
+                    </h1>
+                    <p class="rise rise-2 font-display text-gold text-2xl sm:text-3xl mt-1 tracking-wide">MPL ২০২৬</p>
+                    <p class="rise rise-3 text-cream/80 max-w-2xl mx-auto mt-5 text-base sm:text-lg">
+                        একসাথে খেলি, একসাথে গড়ি সুস্থ শরীর সুন্দর সমাজ
+                    </p>
+                    <div class="rise rise-3 flex flex-wrap gap-4 justify-center mt-8">
+                        <button onclick="openModal('teamModal')"
+                            class="px-7 py-3 rounded-full bg-gold text-pitchdark font-bold hover:bg-goldlight transition shadow-lg shadow-black/20">দল
+                            নিবন্ধন করুন</button>
+                        <button onclick="openModal('playerModal')"
+                            class="px-7 py-3 rounded-full border-2 border-cream/40 text-cream font-bold hover:border-gold hover:text-gold transition">খেলোয়াড়
+                            নিবন্ধন করুন</button>
+                    </div>
+
+                    <!-- stat tiles -->
+                    <div class="rise rise-4 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mt-14">
+                        <div class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">
+                            <p class="font-display font-800 text-gold text-3xl">6</p>
+                            <p class="text-cream/70 text-sm mt-1">অংশগ্রহণকারী দল</p>
+                        </div>
+                        <div class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">
+                            <p class="font-display font-800 text-gold text-3xl">০+</p>
+                            <p class="text-cream/70 text-sm mt-1">নিবন্ধিত খেলোয়াড়</p>
+                        </div>
+                        <div class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">
+                            <p class="font-display font-800 text-gold text-3xl">0</p>
+                            <p class="text-cream/70 text-sm mt-1">মোট ম্যাচ</p>
+                        </div>
+                        <div class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">
+                            <p class="font-display font-800 text-gold text-3xl">1</p>
+                            <p class="text-cream/70 text-sm mt-1">ভেন্যু</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="seam seam-gold bg-pitch"></div>
+
+            <!-- ============ CLUB PHOTO CAROUSEL ============ -->
+            <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+                <div class="text-center mb-8">
+                    <p class="text-maroon font-semibold tracking-widest text-xs">গ্যালারি</p>
+                    <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">ক্লাবের ছবি</h2>
+                </div>
+
+                <div class="relative rounded-3xl overflow-hidden shadow-xl">
+                    <div id="carouselTrack" class="flex">
+                        <div class="min-w-full relative">
+                            <img src="https://picsum.photos/seed/mpl-open/1200/560" alt="উদ্বোধনী অনুষ্ঠান"
+                                class="w-full h-72 sm:h-[420px] object-cover">
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-ink/80 to-transparent p-5">
+                                <p class="text-cream font-display font-600 text-xl">উদ্বোধনী অনুষ্ঠান, MPL ২০২৬</p>
+                            </div>
+                        </div>
+                        <div class="min-w-full relative">
+                            <img src="https://picsum.photos/seed/mpl-match/1200/560" alt="মাঠে খেলা চলছে"
+                                class="w-full h-72 sm:h-[420px] object-cover">
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-ink/80 to-transparent p-5">
+                                <p class="text-cream font-display font-600 text-xl">উপজেলা স্টেডিয়ামে খেলা</p>
+                            </div>
+                        </div>
+                        <div class="min-w-full relative">
+                            <img src="https://picsum.photos/seed/mpl-team/1200/560" alt="দলের ছবি"
+                                class="w-full h-72 sm:h-[420px] object-cover">
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-ink/80 to-transparent p-5">
+                                <p class="text-cream font-display font-600 text-xl">মজমপুর টাইগার্স দল</p>
+                            </div>
+                        </div>
+                        <div class="min-w-full relative">
+                            <img src="https://picsum.photos/seed/mpl-trophy/1200/560" alt="ট্রফি প্রদান"
+                                class="w-full h-72 sm:h-[420px] object-cover">
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-ink/80 to-transparent p-5">
+                                <p class="text-cream font-display font-600 text-xl">গত মৌসুমের ট্রফি বিতরণ</p>
+                            </div>
+                        </div>
+                        <div class="min-w-full relative">
+                            <img src="https://picsum.photos/seed/mpl-crowd/1200/560" alt="দর্শকদের ভিড়"
+                                class="w-full h-72 sm:h-[420px] object-cover">
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-ink/80 to-transparent p-5">
+                                <p class="text-cream font-display font-600 text-xl">গ্যালারিতে দর্শকদের উচ্ছ্বাস</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="moveSlide(-1)" aria-label="পূর্ববর্তী ছবি"
+                        class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-cream/90 hover:bg-gold text-ink flex items-center justify-center text-lg shadow">‹</button>
+                    <button onclick="moveSlide(1)" aria-label="পরবর্তী ছবি"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-cream/90 hover:bg-gold text-ink flex items-center justify-center text-lg shadow">›</button>
+
+                    <div id="carouselDots" class="absolute bottom-3 right-4 flex gap-2"></div>
+                </div>
+            </section>
+
+            <div class="seam seam-maroon"></div>
+
+            <!-- ============ REGISTRATION PROMPT ============ -->
+            <section class="bg-creamdark py-14">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 grid sm:grid-cols-2 gap-6">
+                    <div class="bg-cream rounded-3xl p-8 border border-ink/10 shadow-sm flex flex-col">
+                        <span class="text-4xl mb-3">🛡️</span>
+                        <h3 class="font-display font-700 text-2xl mb-2">দল নিবন্ধন</h3>
+                        <p class="text-ink/70 mb-6 flex-1">আপনার এলাকার দল নিয়ে MPL ২০২৬-এ অংশ নিন। দলের নাম,
+                            অধিনায়কের তথ্য দিয়ে
+                            সহজেই নিবন্ধন করুন।</p>
+                        <button onclick="openModal('teamModal')"
+                            class="self-start px-6 py-2.5 rounded-full bg-pitch text-cream font-semibold hover:bg-pitchdark transition">দল
+                            নিবন্ধন করুন →</button>
+                    </div>
+                    <div class="bg-cream rounded-3xl p-8 border border-ink/10 shadow-sm flex flex-col">
+                        <span class="text-4xl mb-3">🏏</span>
+                        <h3 class="font-display font-700 text-2xl mb-2">খেলোয়াড় নিবন্ধন</h3>
+                        <p class="text-ink/70 mb-6 flex-1">একক খেলোয়াড় হিসেবে নিবন্ধন করুন এবং দলের নিলামে অংশ নেওয়ার
+                            সুযোগ পান।
+                        </p>
+                        <button onclick="openModal('playerModal')"
+                            class="self-start px-6 py-2.5 rounded-full bg-maroon text-cream font-semibold hover:bg-maroon/90 transition">খেলোয়াড়
+                            নিবন্ধন করুন →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ TEAM LIST ============ -->
+            <section id="teams" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+                <div class="text-center mb-10">
+                    <p class="text-maroon font-semibold tracking-widest text-xs">দলসমূহ</p>
+                    <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">MPL ২০২৬ — অংশগ্রহণকারী দল</h2>
+                    <p class="text-ink/50 text-sm mt-2">যেকোনো দলে ক্লিক করলে দলের বিস্তারিত তথ্য, স্কোয়াড ও ম্যাচ দেখা
+                        যাবে</p>
+                </div>
+
+                <div id="teamGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+            </section>
+
+            <div class="seam seam-gold bg-creamdark"></div>
+
+            <!-- ============ PLAYER LIST (PREVIEW) ============ -->
+            <section id="playersPreview" class="bg-creamdark py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                    <div class="text-center mb-10">
+                        <p class="text-maroon font-semibold tracking-widest text-xs">খেলোয়াড়</p>
+                        <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">শীর্ষ পারফর্মার</h2>
+                    </div>
+
+                    <div class="overflow-x-auto rounded-2xl border border-ink/10 bg-cream shadow-sm">
+                        <table class="min-w-full text-sm">
+                            <thead class="bg-pitchdark text-cream">
+                                <tr>
+                                    <th class="px-4 py-3 text-left font-display font-600">নাম</th>
+                                    <th class="px-4 py-3 text-left font-display font-600">দল</th>
+                                    <th class="px-4 py-3 text-left font-display font-600">ভূমিকা</th>
+                                    <th class="px-4 py-3 text-center font-display font-600">ম্যাচ</th>
+                                    <th class="px-4 py-3 text-center font-display font-600">রান</th>
+                                    <th class="px-4 py-3 text-center font-display font-600">উইকেট</th>
+                                </tr>
+                            </thead>
+                            <tbody id="playersPreviewBody" class="divide-y divide-ink/10"></tbody>
+                        </table>
+                    </div>
+                    <div class="text-center mt-6">
+                        <p class="text-ink/50 text-sm mb-4">সম্পূর্ণ তালিকায় ১৪০ জনের বেশি খেলোয়াড় রয়েছে — উপরে
+                            শীর্ষ
+                            পারফর্মারদের একাংশ দেখানো হলো।</p>
+                        <button onclick="go('players')"
+                            class="px-6 py-2.5 rounded-full bg-pitch text-cream font-semibold hover:bg-pitchdark transition">সব
+                            খেলোয়াড় দেখুন →</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="seam seam-maroon"></div>
+
+            <!-- ============ MATCH DETAILS (PREVIEW) ============ -->
+            <section id="matchesPreview" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+                <div class="text-center mb-10">
+                    <p class="text-maroon font-semibold tracking-widest text-xs">ম্যাচসমূহ</p>
+                    <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">ম্যাচ বিবরণ</h2>
+                </div>
+
+                <div id="matchesPreviewGrid" class="grid md:grid-cols-2 gap-5"></div>
+
+                <div class="text-center mt-8">
+                    <button onclick="go('matches')"
+                        class="px-6 py-2.5 rounded-full bg-maroon text-cream font-semibold hover:bg-maroon/90 transition">সব
+                        ম্যাচ
+                        দেখুন →</button>
+                </div>
+            </section>
+
+            <div class="seam seam-gold bg-pitchdark"></div>
+
+            <!-- ============ LIVE SCOREBOARD ============ -->
+            <section id="scoreboard" class="bg-pitchdark py-16">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6">
+                    <div class="text-center mb-10">
+                        <p class="text-gold font-semibold tracking-widest text-xs">লাইভ</p>
+                        <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1 text-cream">স্কোরবোর্ড</h2>
+                    </div>
+
+                    <div class="bg-pitchdeep rounded-3xl border border-gold/25 p-6 sm:p-8">
+                        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                            <div>
+                                <p class="text-cream font-display font-700 text-xl">মজমপুর টাইগার্স</p>
+                                <p class="text-cream/50 text-sm">বনাম উত্তরপাড়া সুপার কিংস</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-display font-800 text-gold text-4xl">১৫৮<span class="text-2xl">/৪</span>
+                                </p>
+                                <p class="text-cream/60 text-sm">১৭.৩ ওভার · রান রেট ৯.০৩</p>
+                            </div>
+                        </div>
+
+                        <!-- batting -->
+                        <p class="text-gold font-display font-600 text-sm mb-2 mt-6">ব্যাটিং</p>
+                        <div class="overflow-x-auto rounded-xl border border-gold/15">
+                            <table class="min-w-full text-sm text-cream">
+                                <thead class="bg-pitch/40 text-cream/70">
+                                    <tr>
+                                        <th class="px-3 py-2 text-left font-display font-600">ব্যাটসম্যান</th>
+                                        <th class="px-3 py-2 text-center font-display font-600">রান</th>
+                                        <th class="px-3 py-2 text-center font-display font-600">বল</th>
+                                        <th class="px-3 py-2 text-center font-display font-600">৪</th>
+                                        <th class="px-3 py-2 text-center font-display font-600">৬</th>
+                                        <th class="px-3 py-2 text-center font-display font-600">স্ট্রাইক রেট</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gold/10">
+                                    <tr>
+                                        <td class="px-3 py-2">রাকিব হোসেন * (অধিনায়ক)</td>
+                                        <td class="px-3 py-2 text-center font-semibold">৬৭</td>
+                                        <td class="px-3 py-2 text-center">৪৫</td>
+                                        <td class="px-3 py-2 text-center">৭</td>
+                                        <td class="px-3 py-2 text-center">২</td>
+                                        <td class="px-3 py-2 text-center">১৪৮.৮</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 py-2">জাহিদুল ইসলাম *</td>
+                                        <td class="px-3 py-2 text-center font-semibold">২৯</td>
+                                        <td class="px-3 py-2 text-center">২২</td>
+                                        <td class="px-3 py-2 text-center">৩</td>
+                                        <td class="px-3 py-2 text-center">১</td>
+                                        <td class="px-3 py-2 text-center">১৩১.৮</td>
+                                    </tr>
+                                    <tr class="text-cream/50">
+                                        <td class="px-3 py-2">ফরহাদ হোসেন — বোল্ড</td>
+                                        <td class="px-3 py-2 text-center">৩৪</td>
+                                        <td class="px-3 py-2 text-center">২৮</td>
+                                        <td class="px-3 py-2 text-center">৪</td>
+                                        <td class="px-3 py-2 text-center">১</td>
+                                        <td class="px-3 py-2 text-center">১২১.৪</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- bowling -->
+                        <p class="text-gold font-display font-600 text-sm mb-2 mt-6">বোলিং</p>
+                        <div class="overflow-x-auto rounded-xl border border-gold/15">
+                            <table class="min-w-full text-sm text-cream">
+                                <thead class="bg-pitch/40 text-cream/70">
+                                    <tr>
+                                        <th class="px-3 py-2 text-left font-display font-600">বোলার</th>
+                                        <th class="px-3 py-2 text-center font-display font-600">ওভার</th>
+                                        <th class="px-3 py-2 text-center font-display font-600">মেডেন</th>
+                                        <th class="px-3 py-2 text-center font-display font-600">রান</th>
+                                        <th class="px-3 py-2 text-center font-display font-600">উইকেট</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gold/10">
+                                    <tr>
+                                        <td class="px-3 py-2">সাব্বির আহমেদ *</td>
+                                        <td class="px-3 py-2 text-center">৪</td>
+                                        <td class="px-3 py-2 text-center">০</td>
+                                        <td class="px-3 py-2 text-center">৩৮</td>
+                                        <td class="px-3 py-2 text-center font-semibold text-gold">২</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 py-2">ফয়সাল করিম</td>
+                                        <td class="px-3 py-2 text-center">৩.৩</td>
+                                        <td class="px-3 py-2 text-center">০</td>
+                                        <td class="px-3 py-2 text-center">২৯</td>
+                                        <td class="px-3 py-2 text-center font-semibold text-gold">২</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="text-center mt-6">
+                            <button onclick="go('scorecard','m2')"
+                                class="px-6 py-2.5 rounded-full bg-gold text-pitchdark font-bold hover:bg-goldlight transition">বিস্তারিত
+                                স্কোরবোর্ড দেখুন →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="seam seam-maroon"></div>
+
+            <!-- ============ POINTS TABLE ============ -->
+            <section id="points" class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+                <div class="text-center mb-10">
+                    <p class="text-maroon font-semibold tracking-widest text-xs">স্ট্যান্ডিং</p>
+                    <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">পয়েন্ট টেবিল</h2>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-ink/10 shadow-sm">
+                    <table class="min-w-full text-sm bg-cream">
+                        <thead class="bg-pitchdark text-cream">
+                            <tr>
+                                <th class="px-4 py-3 text-left font-display font-600">অবস্থান</th>
+                                <th class="px-4 py-3 text-left font-display font-600">দল</th>
+                                <th class="px-4 py-3 text-center font-display font-600">ম্যাচ</th>
+                                <th class="px-4 py-3 text-center font-display font-600">জয়</th>
+                                <th class="px-4 py-3 text-center font-display font-600">পরাজয়</th>
+                                <th class="px-4 py-3 text-center font-display font-600">পয়েন্ট</th>
+                                <th class="px-4 py-3 text-center font-display font-600">নেট রান রেট</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-ink/10">
+                            <tr class="border-l-4 border-gold bg-goldlight/15">
+                                <td class="px-4 py-3 font-semibold">১</td>
+                                <td class="px-4 py-3 font-medium">মজমপুর টাইগার্স</td>
+                                <td class="px-4 py-3 text-center">৫</td>
+                                <td class="px-4 py-3 text-center">৪</td>
+                                <td class="px-4 py-3 text-center">১</td>
+                                <td class="px-4 py-3 text-center font-bold">৮</td>
+                                <td class="px-4 py-3 text-center">+১.২৪</td>
+                            </tr>
+                            <tr class="border-l-4 border-gold bg-goldlight/15">
+                                <td class="px-4 py-3 font-semibold">২</td>
+                                <td class="px-4 py-3 font-medium">কলেজপাড়া ইলেভেন</td>
+                                <td class="px-4 py-3 text-center">৫</td>
+                                <td class="px-4 py-3 text-center">৪</td>
+                                <td class="px-4 py-3 text-center">১</td>
+                                <td class="px-4 py-3 text-center font-bold">৮</td>
+                                <td class="px-4 py-3 text-center">+০.৯৮</td>
+                            </tr>
+                            <tr class="border-l-4 border-gold bg-goldlight/15">
+                                <td class="px-4 py-3 font-semibold">৩</td>
+                                <td class="px-4 py-3 font-medium">উত্তরপাড়া সুপার কিংস</td>
+                                <td class="px-4 py-3 text-center">৫</td>
+                                <td class="px-4 py-3 text-center">৩</td>
+                                <td class="px-4 py-3 text-center">২</td>
+                                <td class="px-4 py-3 text-center font-bold">৬</td>
+                                <td class="px-4 py-3 text-center">+০.৪৫</td>
+                            </tr>
+                            <tr class="border-l-4 border-gold bg-goldlight/15">
+                                <td class="px-4 py-3 font-semibold">৪</td>
+                                <td class="px-4 py-3 font-medium">বটতলা ব্লাস্টার্স</td>
+                                <td class="px-4 py-3 text-center">৫</td>
+                                <td class="px-4 py-3 text-center">৩</td>
+                                <td class="px-4 py-3 text-center">২</td>
+                                <td class="px-4 py-3 text-center font-bold">৬</td>
+                                <td class="px-4 py-3 text-center">+০.১২</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold text-ink/60">৫</td>
+                                <td class="px-4 py-3">পূর্বপাড়া ওয়ারিয়র্স</td>
+                                <td class="px-4 py-3 text-center">৫</td>
+                                <td class="px-4 py-3 text-center">২</td>
+                                <td class="px-4 py-3 text-center">৩</td>
+                                <td class="px-4 py-3 text-center font-bold">৪</td>
+                                <td class="px-4 py-3 text-center">-০.২১</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold text-ink/60">৬</td>
+                                <td class="px-4 py-3">স্টেশন বাজার ক্লাব</td>
+                                <td class="px-4 py-3 text-center">৫</td>
+                                <td class="px-4 py-3 text-center">২</td>
+                                <td class="px-4 py-3 text-center">৩</td>
+                                <td class="px-4 py-3 text-center font-bold">৪</td>
+                                <td class="px-4 py-3 text-center">-০.৩৮</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold text-ink/60">৭</td>
+                                <td class="px-4 py-3">দক্ষিণপাড়া রয়্যালস</td>
+                                <td class="px-4 py-3 text-center">৫</td>
+                                <td class="px-4 py-3 text-center">১</td>
+                                <td class="px-4 py-3 text-center">৪</td>
+                                <td class="px-4 py-3 text-center font-bold">২</td>
+                                <td class="px-4 py-3 text-center">-০.৭৩</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold text-ink/60">৮</td>
+                                <td class="px-4 py-3">নতুনহাট চ্যালেঞ্জার্স</td>
+                                <td class="px-4 py-3 text-center">৫</td>
+                                <td class="px-4 py-3 text-center">১</td>
+                                <td class="px-4 py-3 text-center">৪</td>
+                                <td class="px-4 py-3 text-center font-bold">২</td>
+                                <td class="px-4 py-3 text-center">-১.০৫</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-ink/50 mt-3">🟡 সোনালী চিহ্নিত দলগুলো সেমিফাইনালে উত্তীর্ণ</p>
+            </section>
+
+            <div class="seam seam-gold bg-creamdark"></div>
+
+            <!-- ============ FIXTURES (PREVIEW - CURRENT SEASON ONLY) ============ -->
+            <section id="fixturesPreview" class="bg-creamdark py-16">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6">
+                    <div class="text-center mb-10">
+                        <p class="text-maroon font-semibold tracking-widest text-xs">সময়সূচি</p>
+                        <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">ফিক্সচার — MPL ২০২৬</h2>
+                    </div>
+
+                    <div id="fixturesPreviewWrap"></div>
+
+                    <div class="text-center mt-8">
+                        <button onclick="go('fixtures')"
+                            class="px-6 py-2.5 rounded-full bg-pitch text-cream font-semibold hover:bg-pitchdark transition">সব
+                            মৌসুমের ফিক্সচার দেখুন →</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="seam seam-maroon"></div>
+
+            <!-- ============ TOURNAMENT ARCHIVE ============ -->
+            <section id="tournaments" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+                <div class="text-center mb-10">
+                    <p class="text-maroon font-semibold tracking-widest text-xs">আর্কাইভ</p>
+                    <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">টুর্নামেন্ট তালিকা</h2>
+                    <p class="text-ink/50 text-sm mt-2">টুর্নামেন্টে ক্লিক করলে সেই মৌসুমের সম্পূর্ণ ফিক্সচার ও ফলাফল
+                        দেখা যাবে
+                    </p>
+                </div>
+
+                <div id="tournamentGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+            </section>
+
+            <div class="seam seam-gold bg-pitchdark"></div>
+
+            <!-- ============ COMMITTEE ============ -->
+            <section id="committee" class="bg-pitchdark py-16">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="text-center mb-10">
+                        <p class="text-gold font-semibold tracking-widest text-xs">একতা যুব সংঘ</p>
+                        <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1 text-cream">পরিচালনা কমিটি</h2>
+                        <p class="text-cream/50 text-sm mt-2">MPL ২০২৬ আয়োজক কমিটির সদস্যবৃন্দ</p>
+                    </div>
+
+                    <div id="committeeGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+                </div>
+            </section>
+
+        </div> <!-- /page-home -->
+
+        <!-- ======================================================= -->
+        <!-- ==================  ALL PLAYERS PAGE  ================== -->
+        <!-- ======================================================= -->
+        <div id="page-players" class="page hidden bg-creamdark min-h-screen py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <button onclick="go('home')" class="text-sm text-pitch font-semibold hover:underline mb-4">← হোমে
+                    ফিরুন</button>
+                <div class="mb-8">
+                    <p class="text-maroon font-semibold tracking-widest text-xs">খেলোয়াড়</p>
+                    <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">সম্পূর্ণ খেলোয়াড় তালিকা</h2>
+                </div>
+
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <input id="playerSearch" type="text" placeholder="নাম দিয়ে খুঁজুন..." oninput="renderPlayers()"
+                        class="flex-1 min-w-[200px] rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none text-sm">
+                    <select id="playerTeamFilter" onchange="renderPlayers()"
+                        class="rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none text-sm">
+                        <option value="">সব দল</option>
+                    </select>
+                    <select id="playerRoleFilter" onchange="renderPlayers()"
+                        class="rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none text-sm">
+                        <option value="">সব ভূমিকা</option>
+                        <option value="ব্যাটসম্যান">ব্যাটসম্যান</option>
+                        <option value="বোলার">বোলার</option>
+                        <option value="অলরাউন্ডার">অলরাউন্ডার</option>
+                        <option value="উইকেটরক্ষক">উইকেটরক্ষক</option>
+                    </select>
+                </div>
+
+                <p id="playerCountLabel" class="text-ink/50 text-sm mb-3"></p>
+
+                <div class="overflow-x-auto rounded-2xl border border-ink/10 bg-cream shadow-sm">
+                    <table class="min-w-full text-sm">
+                        <thead class="bg-pitchdark text-cream">
+                            <tr>
+                                <th class="px-4 py-3 text-left font-display font-600">নাম</th>
+                                <th class="px-4 py-3 text-left font-display font-600">দল</th>
+                                <th class="px-4 py-3 text-left font-display font-600">ভূমিকা</th>
+                                <th class="px-4 py-3 text-center font-display font-600">জার্সি</th>
+                                <th class="px-4 py-3 text-center font-display font-600">ম্যাচ</th>
+                                <th class="px-4 py-3 text-center font-display font-600">রান</th>
+                                <th class="px-4 py-3 text-center font-display font-600">উইকেট</th>
+                                <th class="px-4 py-3 text-center font-display font-600">অবস্থা</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allPlayersBody" class="divide-y divide-ink/10"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================= -->
+        <!-- ====================  TEAM DETAIL  ===================== -->
+        <!-- ======================================================= -->
+        <div id="page-team" class="page hidden min-h-screen py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <button onclick="go('home')" class="text-sm text-pitch font-semibold hover:underline mb-4">← হোমে
+                    ফিরুন</button>
+                <div id="teamHeader" class="bg-pitchdark rounded-3xl p-6 sm:p-8 text-cream border border-gold/20 mb-8">
+                </div>
+
+                <div class="flex gap-2 mb-6 flex-wrap" id="teamSquadTabs"></div>
+                <div id="teamSquadWrap" class="mb-12"></div>
+
+                <h3 class="font-display font-700 text-2xl mb-4">দলের ম্যাচসমূহ — MPL ২০২৬</h3>
+                <div id="teamMatchesWrap" class="grid md:grid-cols-2 gap-5"></div>
+            </div>
+        </div>
+
+        <!-- ======================================================= -->
+        <!-- =====================  MATCHES PAGE  ==================== -->
+        <!-- ======================================================= -->
+        <div id="page-matches" class="page hidden min-h-screen py-10">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <button onclick="go('home')" class="text-sm text-pitch font-semibold hover:underline mb-4">← হোমে
+                    ফিরুন</button>
+                <div class="mb-6">
+                    <p class="text-maroon font-semibold tracking-widest text-xs">ম্যাচসমূহ</p>
+                    <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">সব ম্যাচ</h2>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mb-4" id="matchesSeasonTabs"></div>
+                <div class="flex flex-wrap gap-2 mb-8" id="matchesStatusTabs"></div>
+
+                <div id="matchesGrid" class="grid md:grid-cols-2 gap-5"></div>
+            </div>
+        </div>
+
+        <!-- ======================================================= -->
+        <!-- ===================  SCORECARD PAGE  ==================== -->
+        <!-- ======================================================= -->
+        <div id="page-scorecard" class="page hidden bg-pitchdark min-h-screen py-10">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6">
+                <button onclick="go('home')" class="text-sm text-gold font-semibold hover:underline mb-4">← হোমে
+                    ফিরুন</button>
+                <div id="scorecardWrap"></div>
+            </div>
+        </div>
+
+        <!-- ======================================================= -->
+        <!-- ===================  FIXTURES PAGE  ===================== -->
+        <!-- ======================================================= -->
+        <div id="page-fixtures" class="page hidden bg-creamdark min-h-screen py-10">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6">
+                <button onclick="go('home')" class="text-sm text-pitch font-semibold hover:underline mb-4">← হোমে
+                    ফিরুন</button>
+                <div class="mb-6">
+                    <p class="text-maroon font-semibold tracking-widest text-xs">সময়সূচি</p>
+                    <h2 class="font-display font-700 text-3xl sm:text-4xl mt-1">সব মৌসুমের ফিক্সচার</h2>
+                </div>
+                <div class="flex flex-wrap gap-2 mb-8" id="fixturesSeasonTabs"></div>
+                <div id="fixturesWrap"></div>
+            </div>
+        </div>
+
+        <!-- ======================================================= -->
+        <!-- ==================  TOURNAMENT DETAIL  =================== -->
+        <!-- ======================================================= -->
+        <div id="page-tournament" class="page hidden bg-creamdark min-h-screen py-10">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6">
+                <button onclick="go('home')" class="text-sm text-pitch font-semibold hover:underline mb-4">← হোমে
+                    ফিরুন</button>
+                <div id="tournamentHeader" class="mb-8"></div>
+                <div id="tournamentFixturesWrap"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-pitchdeep text-cream/80 pt-14 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid sm:grid-cols-3 gap-8 mb-10">
+            <div>
+                <div class="flex items-center gap-2.5 mb-3">
+                    <span
+                        class="w-9 h-9 rounded-full bg-gold flex items-center justify-center text-pitchdark text-lg font-800">🏏</span>
+                    <span class="font-display font-700 text-cream">একতা যুব সংঘ MPL</span>
+                </div>
+                <p class="text-sm">মজমপুর প্রিমিয়ার লীগ — এলাকার তরুণদের ক্রিকেট প্রতিভা বিকাশের একটি উদ্যোগ। প্রতি বছর
+                    যুবো
+                    সংঘের আয়োজনে অনুষ্ঠিত হয়।</p>
+            </div>
+            <div>
+                <h4 class="font-display font-600 text-cream mb-3">দ্রুত লিংক</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#teams" class="hover:text-gold">দলসমূহ</a></li>
+                    <li><a href="#players" onclick="go('players');return false;" class="hover:text-gold">খেলোয়াড়
+                            তালিকা</a></li>
+                    <li><a href="#points" class="hover:text-gold">পয়েন্ট টেবিল</a></li>
+                    <li><a href="#fixtures" class="hover:text-gold">ফিক্সচার</a></li>
+                    <li><a href="#committee" class="hover:text-gold">কমিটি</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-display font-600 text-cream mb-3">যোগাযোগ</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>📍 মজমপুর, রাজশাহী বিভাগ</li>
+                    <li>📞 ০১৭xx-xxxxxx</li>
+                    <li>✉️ jubosongho.mpl@example.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="seam seam-gold mx-4 sm:mx-6 mb-6"></div>
+        <p class="text-center text-xs text-cream/50">© ২০২৬ একতা যুব সংঘ — মজমপুর প্রিমিয়ার লীগ। সর্বস্বত্ব সংরক্ষিত।
+        </p>
+    </footer>
+
+    <!-- ============ TEAM REGISTRATION MODAL ============ -->
+    <div id="teamModal" class="hidden fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4">
+        <div class="bg-cream rounded-3xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative">
+            <button onclick="closeModal('teamModal')"
+                class="absolute top-4 right-4 text-ink/50 hover:text-maroon text-2xl leading-none"
+                aria-label="বন্ধ করুন">×</button>
+            <h3 class="font-display font-700 text-2xl mb-1">দল নিবন্ধন ফর্ম</h3>
+            <p class="text-ink/60 text-sm mb-6">MPL ২০২৬-এ অংশ নিতে নিচের তথ্যগুলো পূরণ করুন।</p>
+            <form onsubmit="return submitForm(event, 'team')" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">দলের নাম</label>
+                    <input required type="text" placeholder="যেমনঃ মজমপুর টাইগার্স"
+                        class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">অধিনায়কের নাম</label>
+                    <input required type="text" placeholder="পূর্ণ নাম লিখুন"
+                        class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">মোবাইল নম্বর</label>
+                        <input required type="tel" placeholder="01XXXXXXXXX"
+                            class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">খেলোয়াড় সংখ্যা</label>
+                        <input required type="number" min="11" max="20" placeholder="১৫"
+                            class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">এলাকা / গ্রাম</label>
+                    <input required type="text" placeholder="যেমনঃ উত্তরপাড়া"
+                        class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">দলের লোগো (ঐচ্ছিক)</label>
+                    <input type="file" accept="image/*"
+                        class="w-full rounded-xl border border-ink/15 px-4 py-2 bg-white text-sm">
+                </div>
+                <button type="submit"
+                    class="w-full mt-2 px-6 py-3 rounded-full bg-pitch text-cream font-bold hover:bg-pitchdark transition">দল
+                    নিবন্ধন সম্পন্ন করুন</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============ PLAYER REGISTRATION MODAL ============ -->
+    <div id="playerModal" class="hidden fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4">
+        <div class="bg-cream rounded-3xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative">
+            <button onclick="closeModal('playerModal')"
+                class="absolute top-4 right-4 text-ink/50 hover:text-maroon text-2xl leading-none"
+                aria-label="বন্ধ করুন">×</button>
+            <h3 class="font-display font-700 text-2xl mb-1">খেলোয়াড় নিবন্ধন ফর্ম</h3>
+            <p class="text-ink/60 text-sm mb-6">একক খেলোয়াড় হিসেবে নিবন্ধনের জন্য তথ্য পূরণ করুন।</p>
+            <form onsubmit="return submitForm(event, 'player')" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">পূর্ণ নাম</label>
+                    <input required type="text" placeholder="আপনার পূর্ণ নাম লিখুন"
+                        class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">বয়স</label>
+                        <input required type="number" min="12" max="50" placeholder="২২"
+                            class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">মোবাইল নম্বর</label>
+                        <input required type="tel" placeholder="01XXXXXXXXX"
+                            class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">পছন্দের দল</label>
+                    <select required
+                        class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                        <option value="">দল নির্বাচন করুন</option>
+                        <option>মজমপুর টাইগার্স</option>
+                        <option>উত্তরপাড়া সুপার কিংস</option>
+                        <option>পূর্বপাড়া ওয়ারিয়র্স</option>
+                        <option>দক্ষিণপাড়া রয়্যালস</option>
+                        <option>স্টেশন বাজার ক্লাব</option>
+                        <option>কলেজপাড়া ইলেভেন</option>
+                        <option>নতুনহাট চ্যালেঞ্জার্স</option>
+                        <option>বটতলা ব্লাস্টার্স</option>
+                        <option>নির্দিষ্ট নেই — নিলামে অংশ নিতে চাই</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">ভূমিকা</label>
+                        <select required
+                            class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                            <option value="">নির্বাচন করুন</option>
+                            <option>ব্যাটসম্যান</option>
+                            <option>বোলার</option>
+                            <option>অলরাউন্ডার</option>
+                            <option>উইকেটরক্ষক</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">জার্সি নম্বর</label>
+                        <input type="number" min="0" max="99" placeholder="৭"
+                            class="w-full rounded-xl border border-ink/15 px-4 py-2.5 bg-white focus:border-gold outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">ছবি (ঐচ্ছিক)</label>
+                    <input type="file" accept="image/*"
+                        class="w-full rounded-xl border border-ink/15 px-4 py-2 bg-white text-sm">
+                </div>
+                <button type="submit"
+                    class="w-full mt-2 px-6 py-3 rounded-full bg-maroon text-cream font-bold hover:bg-maroon/90 transition">খেলোয়াড়
+                    নিবন্ধন সম্পন্ন করুন</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============ SUCCESS TOAST ============ -->
+    <div id="toast"
+        class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] bg-pitchdark text-cream px-6 py-3 rounded-full shadow-lg border border-gold/30 text-sm font-medium">
+        ✅ নিবন্ধন সফলভাবে জমা হয়েছে!
+    </div>
+
+    <script>
+        /* ============================================================
+           DATA
+        ============================================================ */
+        const NAME_POOL = ["সোহেল রানা", "আরিফুল ইসলাম", "কামরুল হাসান", "নাসির উদ্দিন", "রুবেল মিয়া", "আশরাফুল আলম", "হাবিবুর রহমান", "জসিম উদ্দিন", "মিজানুর রহমান", "শরিফুল ইসলাম", "আলামিন হোসেন", "বাবু মিয়া", "সেলিম রেজা", "মনিরুল ইসলাম", "ইউসুফ আলী", "তোফাজ্জল হোসেন", "আক্তার হোসেন", "রায়হান কবির", "দুলাল মিয়া", "ফরিদ উদ্দিন", "গোলাম রাব্বি", "হৃদয় হাসান", "ইলিয়াস হোসেন", "জাকারিয়া আলম"];
+
+        const TEAMS = [
+            {
+                id: 'tigers', owner_name: 'Sabbir Hosen Rasel', name: 'Mojompur Hanters', short: 'MT', captain: '', area: 'মজমপুর ', playerCount: 15,
+                featured: [
+                    { name: 'রাকিব হোসেন', role: 'অধিনায়ক / ব্যাটসম্যান', jersey: 1, matches: 5, runs: 234, wickets: 2 },
+                    { name: 'জাহিদুল ইসলাম', role: 'ব্যাটসম্যান', jersey: 7, matches: 5, runs: 187, wickets: 0 },
+                    { name: 'ফরহাদ হোসেন', role: 'অলরাউন্ডার', jersey: 11, matches: 5, runs: 156, wickets: 6 },
+                ]
+            },
+            {
+                id: 'uttor', owner_name: 'Arkot, Nozir, Shimul', name: 'BDM Riders', short: 'BD', captain: '', area: '', playerCount: 15,
+                featured: [
+                    { name: 'সাব্বির আহমেদ', role: 'অধিনায়ক / অলরাউন্ডার', jersey: 9, matches: 5, runs: 198, wickets: 9 },
+                    { name: 'ফয়সাল করিম', role: 'বোলার', jersey: 14, matches: 5, runs: 32, wickets: 10 },
+                ]
+            },
+            {
+                id: 'purbo', owner_name: 'Nijam, Rasel, Milton', name: 'Joynal Sriti XI', short: 'JSA', captain: '', area: '', playerCount: 15,
+                featured: [
+                    { name: 'ইমরান শেখ', role: 'অধিনায়ক / বোলার', jersey: 8, matches: 4, runs: 42, wickets: 11 },
+                ]
+            },
+            {
+                id: 'dokkhin', owner_name: 'Sabbir Hasan Chawdary Ratul', name: 'Monjurul Haque Chawdhary Raton XI', short: 'MH', captain: '', area: '', playerCount: 15,
+                featured: [
+                    { name: 'তানভীর ইসলাম', role: 'অধিনায়ক / উইকেটরক্ষক', jersey: 3, matches: 5, runs: 156, wickets: 0 },
+                ]
+            },
+            {
+                id: 'station', owner_name: 'Robin, Anik, Sams', name: 'Nurbag 53', short: 'N53', captain: '', area: '', playerCount: 15,
+                featured: [
+                    { name: 'মাহমুদুল হাসান', role: 'অধিনায়ক / ব্যাটসম্যান', jersey: 5, matches: 4, runs: 175, wickets: 0 },
+                ]
+            },
+            {
+                id: 'college', owner_name: 'Jalal, Jahid', name: 'Sokal Sondha Express', short: 'SSE', captain: '', area: '', playerCount: 15,
+                featured: [
+                    { name: 'নাঈম মোল্লা', role: 'অধিনায়ক / অলরাউন্ডার', jersey: 10, matches: 5, runs: 132, wickets: 7 },
+                ]
+            },
+
+        ];
+
+        const SEASONS = [
+            { id: 'mpl2026', label: 'MPL ২০২৬', status: 'চলমান', teamsCount: 8, matchesCount: 24, champion: null },
+            { id: 'mpl2025', label: 'MPL ২০২৫', status: 'সমাপ্ত', teamsCount: 6, matchesCount: 18, champion: 'উত্তরপাড়া সুপার কিংস' },
+            { id: 'mpl2024', label: 'MPL ২০২৪', status: 'সমাপ্ত', teamsCount: 6, matchesCount: 15, champion: 'মজমপুর টাইগার্স' },
+            { id: 'winter2023', label: 'শীতকালীন কাপ ২০২৩', status: 'সমাপ্ত', teamsCount: 4, matchesCount: 8, champion: 'কলেজপাড়া ইলেভেন' },
+        ];
+
+        // batting/bowling detail used for the two fully-scored matches
+        const M2_DETAIL = {
+            battingA: [
+                { name: 'রাকিব হোসেন * (অধিনায়ক)', runs: 67, balls: 45, fours: 7, sixes: 2, sr: '১৪৮.৮', out: false },
+                { name: 'জাহিদুল ইসলাম *', runs: 29, balls: 22, fours: 3, sixes: 1, sr: '১৩১.৮', out: false },
+                { name: 'ফরহাদ হোসেন — বোল্ড', runs: 34, balls: 28, fours: 4, sixes: 1, sr: '১২১.৪', out: true },
+            ],
+            bowlingB: [
+                { name: 'সাব্বির আহমেদ *', overs: '৪', maidens: 0, runs: 38, wickets: 2 },
+                { name: 'ফয়সাল করিম', overs: '৩.৩', maidens: 0, runs: 29, wickets: 2 },
+            ],
+            battingB: null, bowlingA: null,
+        };
+
+        const FIXTURES = [
+            // ---------------- MPL 2026 : LEAGUE ----------------
+            { id: 'm1', season: 'mpl2026', round: 'লীগ পর্ব', date: '৩ আগস্ট', time: 'বিকেল ৩:০০', venue: 'কলেজ মাঠ', teamA: 'college', teamB: 'bot', status: 'completed', scoreA: '১৭৬/৬ (২০)', scoreB: '১৪২/৯ (২০)', result: 'কলেজপাড়া ইলেভেন ৩৪ রানে জয়ী' },
+            { id: 'm2', season: 'mpl2026', round: 'লীগ পর্ব', date: '৪ আগস্ট', time: 'বিকেল ৩:০০', venue: 'উপজেলা স্টেডিয়াম', teamA: 'tigers', teamB: 'uttor', status: 'live', scoreA: '১৫৮/৪ (১৭.৩)', scoreB: 'ব্যাটিং বাকি', detail: M2_DETAIL },
+            { id: 'm3', season: 'mpl2026', round: 'লীগ পর্ব', date: '৫ আগস্ট', time: 'বিকেল ৪:০০', venue: 'কলেজ মাঠ', teamA: 'purbo', teamB: 'notun', status: 'completed', scoreA: '১৫০/৭ (২০)', scoreB: '১৩২/৮ (২০)', result: 'পূর্বপাড়া ওয়ারিয়র্স ১৮ রানে জয়ী' },
+            { id: 'm4', season: 'mpl2026', round: 'লীগ পর্ব', date: '৬ আগস্ট', time: 'সকাল ১০:০০', venue: 'উপজেলা স্টেডিয়াম', teamA: 'dokkhin', teamB: 'station', status: 'completed', scoreA: '১২৮/৯ (২০)', scoreB: '১২৯/৫ (১৮.২)', result: 'স্টেশন বাজার ক্লাব ৫ উইকেটে জয়ী' },
+            { id: 'm5', season: 'mpl2026', round: 'লীগ পর্ব', date: '৮ আগস্ট', time: 'বিকেল ৪:০০', venue: 'কলেজ মাঠ', teamA: 'purbo', teamB: 'dokkhin', status: 'upcoming' },
+            { id: 'm6', season: 'mpl2026', round: 'লীগ পর্ব', date: '৯ আগস্ট', time: 'সকাল ১০:০০', venue: 'উপজেলা স্টেডিয়াম', teamA: 'station', teamB: 'notun', status: 'upcoming' },
+            { id: 'm7', season: 'mpl2026', round: 'লীগ পর্ব', date: '১০ আগস্ট', time: 'বিকেল ৩:০০', venue: 'নতুনহাট মাঠ', teamA: 'tigers', teamB: 'bot', status: 'upcoming' },
+            { id: 'm8', season: 'mpl2026', round: 'লীগ পর্ব', date: '১১ আগস্ট', time: 'বিকেল ৪:০০', venue: 'কলেজ মাঠ', teamA: 'uttor', teamB: 'college', status: 'upcoming' },
+            { id: 'm9', season: 'mpl2026', round: 'লীগ পর্ব', date: '১২ আগস্ট', time: 'বিকেল ৪:০০', venue: 'উপজেলা স্টেডিয়াম', teamA: 'purbo', teamB: 'station', status: 'upcoming' },
+            { id: 'm10', season: 'mpl2026', round: 'লীগ পর্ব', date: '১৩ আগস্ট', time: 'সকাল ১০:০০', venue: 'কলেজ মাঠ', teamA: 'dokkhin', teamB: 'notun', status: 'upcoming' },
+            { id: 'm11', season: 'mpl2026', round: 'লীগ পর্ব', date: '১৪ আগস্ট', time: 'বিকেল ৩:০০', venue: 'উপজেলা স্টেডিয়াম', teamA: 'tigers', teamB: 'college', status: 'upcoming' },
+            { id: 'm12', season: 'mpl2026', round: 'লীগ পর্ব', date: '১৫ আগস্ট', time: 'বিকেল ৪:০০', venue: 'নতুনহাট মাঠ', teamA: 'uttor', teamB: 'bot', status: 'upcoming' },
+            // ---------------- MPL 2026 : KNOCKOUT ----------------
+            { id: 'sf1-2026', season: 'mpl2026', round: 'সেমিফাইনাল', date: '২০ আগস্ট', time: 'বিকেল ৩:০০', venue: 'উপজেলা স্টেডিয়াম', label: 'পয়েন্ট টেবিল ১ম বনাম ৪র্থ', status: 'upcoming' },
+            { id: 'sf2-2026', season: 'mpl2026', round: 'সেমিফাইনাল', date: '২১ আগস্ট', time: 'বিকেল ৩:০০', venue: 'উপজেলা স্টেডিয়াম', label: 'পয়েন্ট টেবিল ২য় বনাম ৩য়', status: 'upcoming' },
+            { id: 'f-2026', season: 'mpl2026', round: 'ফাইনাল', date: '২৫ আগস্ট', time: 'বিকেল ৪:০০', venue: 'উপজেলা স্টেডিয়াম', label: 'সেমিফাইনাল বিজয়ী ১ বনাম বিজয়ী ২', status: 'upcoming' },
+
+            // ---------------- MPL 2025 (archive) ----------------
+            { id: 'sf1-2025', season: 'mpl2025', round: 'সেমিফাইনাল', date: '১৮ আগস্ট ২০২৫', time: 'বিকেল ৩:০০', venue: 'উপজেলা স্টেডিয়াম', teamA: 'uttor', teamB: 'college', status: 'completed', scoreA: '১৬৪/৫ (২০)', scoreB: '১৪৯/৮ (২০)', result: 'উত্তরপাড়া সুপার কিংস ১৫ রানে জয়ী' },
+            { id: 'sf2-2025', season: 'mpl2025', round: 'সেমিফাইনাল', date: '১৯ আগস্ট ২০২৫', time: 'বিকেল ৩:০০', venue: 'উপজেলা স্টেডিয়াম', teamA: 'tigers', teamB: 'station', status: 'completed', scoreA: '১৭২/৪ (২০)', scoreB: '১৫৮/৭ (২০)', result: 'মজমপুর টাইগার্স ১৪ রানে জয়ী' },
+            { id: 'f-2025', season: 'mpl2025', round: 'ফাইনাল', date: '২২ আগস্ট ২০২৫', time: 'বিকেল ৪:০০', venue: 'উপজেলা স্টেডিয়াম', teamA: 'uttor', teamB: 'tigers', status: 'completed', scoreA: '১৮০/৩ (২০)', scoreB: '১৬৬/৯ (২০)', result: 'উত্তরপাড়া সুপার কিংস ৬ উইকেটে চ্যাম্পিয়ন' },
+
+            // ---------------- MPL 2024 (archive) ----------------
+            { id: 'sf1-2024', season: 'mpl2024', round: 'সেমিফাইনাল', date: '১৭ আগস্ট ২০২৪', time: 'বিকেল ৩:০০', venue: 'কলেজ মাঠ', teamA: 'tigers', teamB: 'purbo', status: 'completed', scoreA: '১৫৫/৬ (২০)', scoreB: '১৩৮/৯ (২০)', result: 'মজমপুর টাইগার্স ১৭ রানে জয়ী' },
+            { id: 'sf2-2024', season: 'mpl2024', round: 'সেমিফাইনাল', date: '১৮ আগস্ট ২০২৪', time: 'বিকেল ৩:০০', venue: 'কলেজ মাঠ', teamA: 'college', teamB: 'dokkhin', status: 'completed', scoreA: '১৪৮/৭ (২০)', scoreB: '১৩৩/৮ (২০)', result: 'কলেজপাড়া ইলেভেন ১৫ রানে জয়ী' },
+            { id: 'f-2024', season: 'mpl2024', round: 'ফাইনাল', date: '২১ আগস্ট ২০২৪', time: 'বিকেল ৪:০০', venue: 'উপজেলা স্টেডিয়াম', teamA: 'tigers', teamB: 'college', status: 'completed', scoreA: '১৬৯/৫ (২০)', scoreB: '১৫৭/৭ (২০)', result: 'মজমপুর টাইগার্স ১২ রানে চ্যাম্পিয়ন' },
+
+            // ---------------- শীতকালীন কাপ ২০২৩ (archive) ----------------
+            { id: 'sf1-2023', season: 'winter2023', round: 'সেমিফাইনাল', date: '১০ ডিসেম্বর ২০২৩', time: 'বিকেল ৩:০০', venue: 'কলেজ মাঠ', teamA: 'college', teamB: 'uttor', status: 'completed', scoreA: '১৩৯/৫ (২০)', scoreB: '১২৬/৮ (২০)', result: 'কলেজপাড়া ইলেভেন ১৩ রানে জয়ী' },
+            { id: 'sf2-2023', season: 'winter2023', round: 'সেমিফাইনাল', date: '১১ ডিসেম্বর ২০২৩', time: 'বিকেল ৩:০০', venue: 'কলেজ মাঠ', teamA: 'bot', teamB: 'tigers', status: 'completed', scoreA: '১৩৩/৬ (২০)', scoreB: '১২৯/৯ (২০)', result: 'বটতলা ব্লাস্টার্স ৪ রানে জয়ী' },
+            { id: 'f-2023', season: 'winter2023', round: 'ফাইনাল', date: '১৪ ডিসেম্বর ২০২৩', time: 'বিকেল ৪:০০', venue: 'উপজেলা স্টেডিয়াম', teamA: 'college', teamB: 'bot', status: 'completed', scoreA: '১৪৫/৪ (২০)', scoreB: '১৩০/৯ (২০)', result: 'কলেজপাড়া ইলেভেন ১৫ রানে চ্যাম্পিয়ন' },
+        ];
+
+        const COMMITTEE = [
+            { role: 'সভাপতি', name: 'আব্দুল হালিম মোল্লা' },
+            { role: 'সহ-সভাপতি', name: 'নজরুল ইসলাম' },
+            { role: 'সাধারণ সম্পাদক', name: 'শফিকুল ইসলাম' },
+            { role: 'যুগ্ম সম্পাদক', name: 'রফিকুল আলম' },
+            { role: 'কোষাধ্যক্ষ', name: 'আনোয়ার হোসেন' },
+            { role: 'ক্রীড়া সম্পাদক', name: 'তারেক আজিজ' },
+            { role: 'প্রচার সম্পাদক', name: 'মাসুদ রানা' },
+            { role: 'সাংগঠনিক সম্পাদক', name: 'বেলাল হোসেন' },
+        ];
+
+        /* ============================================================
+           HELPERS
+        ============================================================ */
+        function teamById(id) { return TEAMS.find(t => t.id === id); }
+        function seasonById(id) { return SEASONS.find(s => s.id === id); }
+        function fixtureById(id) { return FIXTURES.find(f => f.id === id); }
+
+        function buildSquad(team) {
+            const list = team.featured.map((p, i) => ({ ...p, isCaptain: p.name === team.captain }));
+            let i = 0;
+            while (list.length < team.playerCount) {
+                const nm = NAME_POOL[(i + TEAMS.indexOf(team) * 3) % NAME_POOL.length];
+                const roles = ['ব্যাটসম্যান', 'বোলার', 'অলরাউন্ডার', 'উইকেটরক্ষক'];
+                list.push({ name: nm, role: roles[i % roles.length], jersey: 20 + i, matches: Math.floor(Math.random() * 3) + 1, runs: Math.floor(Math.random() * 80), wickets: Math.floor(Math.random() * 5), isCaptain: false });
+                i++;
+            }
+            list.forEach((p, idx) => { p.status = idx < 11 ? 'playing' : 'standby'; });
+            return list;
+        }
+
+        function allPlayersFlat() {
+            const out = [];
+            TEAMS.forEach(team => {
+                buildSquad(team).forEach(p => out.push({ ...p, teamId: team.id, teamName: team.name }));
+            });
+            return out;
+        }
+
+        function statusBadge(status) {
+            if (status === 'live') return '<span class="flex items-center gap-1.5 text-maroon font-semibold text-xs"><span class="w-2 h-2 rounded-full bg-maroon pulse-dot"></span> লাইভ</span>';
+            if (status === 'upcoming') return '<span class="text-pitch font-semibold text-xs bg-pitch/10 px-2.5 py-0.5 rounded-full inline-block">আসন্ন</span>';
+            return '<span class="text-ink/60 font-semibold text-xs bg-ink/10 px-2.5 py-0.5 rounded-full inline-block">সম্পন্ন</span>';
+        }
+
+        function matchTeamLabel(fx, side) {
+            const tid = side === 'A' ? fx.teamA : fx.teamB;
+            if (tid) { const t = teamById(tid); return t ? t.name : tid; }
+            return null;
+        }
+
+        /* ---------- match card (used on home preview + matches page) ---------- */
+        function matchCardHTML(fx, dark) {
+            const nameA = matchTeamLabel(fx, 'A');
+            const nameB = matchTeamLabel(fx, 'B');
+            const isLabelOnly = !nameA && !nameB && fx.label;
+            const borderCls = fx.status === 'live' ? 'border-2 border-maroon' : (dark ? 'border border-gold/20' : 'border border-ink/10');
+            const bgCls = dark ? 'bg-pitchdeep text-cream' : (fx.status === 'completed' ? 'bg-creamdark' : 'bg-cream');
+            const clickable = fx.status !== 'upcoming' || fx.detail;
+            const onClick = (nameA && nameB) ? ` onclick="go('scorecard','${fx.id}')" style="cursor:pointer"` : '';
+            let scoreBlock = '';
+            if (isLabelOnly) {
+                scoreBlock = `<p class="font-display font-600 text-center ${dark ? 'text-gold' : 'text-maroon'} text-sm py-2">${fx.label}</p>`;
+            } else {
+                scoreBlock = `<div class="flex items-center justify-between">
+            <div class="text-center flex-1">
+              <p class="font-display font-700 ${dark ? 'text-cream' : ''}">${nameA}</p>
+              ${fx.scoreA ? `<p class="text-xl font-display font-800 ${dark ? 'text-gold' : 'text-pitch'}">${fx.scoreA}</p>` : ''}
+            </div>
+            <p class="font-display ${dark ? 'text-cream/40' : 'text-ink/40'} px-3">বনাম</p>
+            <div class="text-center flex-1">
+              <p class="font-display font-700 ${dark ? 'text-cream' : ''}">${nameB}</p>
+              ${fx.scoreB ? `<p class="text-xl font-display font-800 ${fx.status === 'completed' ? (dark ? 'text-gold' : 'text-pitch') : (dark ? 'text-cream/40' : 'text-ink/40')}">${fx.scoreB}</p>` : ''}
+            </div>
+          </div>`;
+            }
+            return `<div class="rounded-2xl ${borderCls} ${bgCls} p-5 shadow-sm"${onClick}>
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            ${statusBadge(fx.status)}
+            <span class="${dark ? 'text-cream/50' : 'text-ink/50'} text-sm">${fx.date}${fx.time ? ', ' + fx.time : ''} · ${fx.venue}</span>
+          </div>
+          ${scoreBlock}
+          ${fx.result ? `<p class="text-center text-sm font-semibold text-gold mt-3">${fx.result}</p>` : ''}
+          ${clickable && nameA && nameB ? `<p class="text-center mt-3 text-xs font-semibold ${dark ? 'text-gold' : 'text-maroon'}">স্কোরকার্ড দেখতে ক্লিক করুন →</p>` : ''}
+        </div>`;
+        }
+
+        /* ---------- fixtures list (grouped by round, used for fixtures page + tournament page) ---------- */
+        function renderFixtureRounds(seasonId, container) {
+            const rounds = ['লীগ পর্ব', 'সেমিফাইনাল', 'ফাইনাল'];
+            let html = '';
+            rounds.forEach(round => {
+                const items = FIXTURES.filter(f => f.season === seasonId && f.round === round);
+                if (!items.length) return;
+                const isFinal = round === 'ফাইনাল';
+                html += `<div class="mb-8">
+          <h3 class="font-display font-600 text-lg ${isFinal ? 'text-maroon' : 'text-pitch'} mb-3">${round}</h3>
+          <div class="${isFinal ? '' : 'bg-cream rounded-2xl divide-y divide-ink/10 border border-ink/10 overflow-hidden'}">`;
+                items.forEach(fx => {
+                    const nameA = matchTeamLabel(fx, 'A') || fx.label;
+                    const nameB = matchTeamLabel(fx, 'B');
+                    const clickable = matchTeamLabel(fx, 'A') && matchTeamLabel(fx, 'B');
+                    const rowCls = isFinal
+                        ? `bg-pitchdark rounded-2xl px-5 py-4 text-cream flex flex-wrap items-center gap-2 justify-between text-sm border border-gold/30 ${clickable ? 'cursor-pointer hover:border-gold' : ''}`
+                        : `flex flex-wrap items-center gap-2 justify-between px-5 py-3 text-sm ${clickable ? 'cursor-pointer hover:bg-goldlight/20' : ''}`;
+                    const onclick = clickable ? ` onclick="go('scorecard','${fx.id}')"` : '';
+                    const label = nameB ? `${nameA} বনাম ${nameB}` : nameA;
+                    const dateCls = isFinal ? 'text-cream/60 w-32' : 'text-ink/50 w-32';
+                    const venCls = isFinal ? 'text-cream/60' : 'text-ink/50';
+                    const labelCls = isFinal ? 'font-display font-600 text-gold' : (fx.status === 'completed' ? 'font-medium text-ink/70' : 'font-medium');
+                    html += `<div class="${rowCls}"${onclick}>
+              <span class="${dateCls}">${fx.date}${fx.time ? ', ' + fx.time : ''}</span>
+              <span class="${labelCls}">${label}${fx.result ? `<br><span class="text-xs ${isFinal ? 'text-gold/80' : 'text-gold'}">${fx.result}</span>` : ''}</span>
+              <span class="${venCls}">${fx.venue}</span>
+            </div>`;
+                });
+                html += `</div></div>`;
+            });
+            if (!html) html = `<p class="text-ink/50 text-center py-10">এই মৌসুমের ফিক্সচার শীঘ্রই যুক্ত করা হবে।</p>`;
+            container.innerHTML = html;
+        }
+
+        /* ============================================================
+           RENDERERS — HOME
+        ============================================================ */
+        function renderHomeSummaries() {
+            // team grid
+            const teamGrid = document.getElementById('teamGrid');
+            if (teamGrid && !teamGrid.dataset.done) {
+                teamGrid.innerHTML = TEAMS.map(t => `
+          <div onclick="go('team','${t.id}')" class="bg-pitchdark rounded-2xl p-5 text-cream border border-gold/20 hover:-translate-y-1 hover:border-gold transition cursor-pointer">
+            <div class="w-14 h-14 rounded-full bg-gold text-pitchdark font-display font-800 text-xl flex items-center justify-center mb-4">${t.short}</div>
+            <h3 class="font-display font-700 text-lg">${t.name}</h3>
+            <p class="text-cream/60 text-sm mt-1">Owner: ${t.owner_name}</p>
+            <p class="text-cream/60 text-sm mt-1">অধিনায়ক: ${t.captain}</p>
+            <p class="text-cream/60 text-sm">খেলোয়াড়: ${t.playerCount} জন · এলাকা: ${t.area}</p>
+            <p class="text-gold text-xs font-semibold mt-3">বিস্তারিত দেখুন →</p>
+          </div>`).join('');
+                teamGrid.dataset.done = '1';
+            }
+
+            // players preview (top 8 by runs)
+            const body = document.getElementById('playersPreviewBody');
+            if (body && !body.dataset.done) {
+                const top = allPlayersFlat().filter(p => p.matches > 0).sort((a, b) => (b.runs + b.wickets * 10) - (a.runs + a.wickets * 10)).slice(0, 8);
+                body.innerHTML = top.map(p => `
+          <tr class="hover:bg-goldlight/20">
+            <td class="px-4 py-3 font-medium">${p.name}</td>
+            <td class="px-4 py-3">${p.teamName}</td>
+            <td class="px-4 py-3">${p.role}</td>
+            <td class="px-4 py-3 text-center">${p.matches}</td>
+            <td class="px-4 py-3 text-center font-semibold text-pitch">${p.runs}</td>
+            <td class="px-4 py-3 text-center ${p.wickets > 5 ? 'font-semibold text-maroon' : ''}">${p.wickets || '-'}</td>
+          </tr>`).join('');
+                body.dataset.done = '1';
+            }
+
+            // matches preview (live + 3 upcoming + 1 completed from current season)
+            const mpGrid = document.getElementById('matchesPreviewGrid');
+            if (mpGrid && !mpGrid.dataset.done) {
+                const cur = FIXTURES.filter(f => f.season === 'mpl2026' && f.round === 'লীগ পর্ব');
+                const live = cur.filter(f => f.status === 'live');
+                const upcoming = cur.filter(f => f.status === 'upcoming').slice(0, 2);
+                const completed = cur.filter(f => f.status === 'completed').slice(0, 1);
+                const list = [...live, ...upcoming, ...completed];
+                mpGrid.innerHTML = list.map(fx => matchCardHTML(fx, false)).join('');
+                mpGrid.dataset.done = '1';
+            }
+
+            // fixtures preview (current season only)
+            const fxWrap = document.getElementById('fixturesPreviewWrap');
+            if (fxWrap && !fxWrap.dataset.done) {
+                renderFixtureRounds('mpl2026', fxWrap);
+                fxWrap.dataset.done = '1';
+            }
+
+            // tournament grid
+            const tGrid = document.getElementById('tournamentGrid');
+            if (tGrid && !tGrid.dataset.done) {
+                tGrid.innerHTML = SEASONS.map(s => `
+          <div onclick="go('tournament','${s.id}')" class="rounded-2xl ${s.status === 'চলমান' ? 'border-2 border-gold' : 'border border-ink/10'} bg-cream p-5 hover:-translate-y-1 transition cursor-pointer">
+            <span class="inline-block text-xs font-semibold ${s.status === 'চলমান' ? 'text-maroon bg-maroon/10' : 'text-ink/50 bg-ink/5'} px-2.5 py-0.5 rounded-full mb-3">${s.status}</span>
+            <h3 class="font-display font-700 text-lg">${s.label}</h3>
+            <p class="text-ink/60 text-sm mt-1">${s.teamsCount}টি দল · ${s.matchesCount} ম্যাচ</p>
+            <p class="text-ink/60 text-sm">চ্যাম্পিয়ন: ${s.champion || 'নির্ধারিত হয়নি'}</p>
+            <p class="text-maroon text-xs font-semibold mt-3">ফিক্সচার ও ফলাফল দেখুন →</p>
+          </div>`).join('');
+                tGrid.dataset.done = '1';
+            }
+
+            // committee
+            const cGrid = document.getElementById('committeeGrid');
+            if (cGrid && !cGrid.dataset.done) {
+                cGrid.innerHTML = COMMITTEE.map(m => `
+          <div class="bg-pitchdeep/60 border border-gold/25 rounded-2xl p-5 text-center">
+            <div class="w-14 h-14 mx-auto rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center text-gold font-display font-800 text-lg mb-3">${m.name.charAt(0)}</div>
+            <p class="font-display font-700 text-cream">${m.name}</p>
+            <p class="text-gold text-sm mt-1">${m.role}</p>
+          </div>`).join('');
+                cGrid.dataset.done = '1';
+            }
+        }
+
+        /* ============================================================
+           RENDERERS — PLAYERS PAGE
+        ============================================================ */
+        function renderPlayers() {
+            const teamSel = document.getElementById('playerTeamFilter');
+            if (teamSel.options.length <= 1) {
+                TEAMS.forEach(t => { const o = document.createElement('option'); o.value = t.id; o.textContent = t.name; teamSel.appendChild(o); });
+            }
+            const q = document.getElementById('playerSearch').value.trim().toLowerCase();
+            const teamF = teamSel.value;
+            const roleF = document.getElementById('playerRoleFilter').value;
+            let players = allPlayersFlat();
+            if (q) players = players.filter(p => p.name.toLowerCase().includes(q));
+            if (teamF) players = players.filter(p => p.teamId === teamF);
+            if (roleF) players = players.filter(p => p.role.includes(roleF));
+            document.getElementById('playerCountLabel').textContent = players.length + ' জন খেলোয়াড় পাওয়া গেছে';
+            document.getElementById('allPlayersBody').innerHTML = players.map(p => `
+        <tr class="hover:bg-goldlight/20">
+          <td class="px-4 py-3 font-medium">${p.name}${p.isCaptain ? ' <span class="text-xs text-gold">(অধি.)</span>' : ''}</td>
+          <td class="px-4 py-3">${p.teamName}</td>
+          <td class="px-4 py-3">${p.role}</td>
+          <td class="px-4 py-3 text-center">${p.jersey}</td>
+          <td class="px-4 py-3 text-center">${p.matches}</td>
+          <td class="px-4 py-3 text-center font-semibold text-pitch">${p.runs}</td>
+          <td class="px-4 py-3 text-center">${p.wickets || '-'}</td>
+          <td class="px-4 py-3 text-center">${p.status === 'playing' ? '<span class="text-xs text-pitch font-semibold">একাদশে</span>' : '<span class="text-xs text-ink/40">স্ট্যান্ডবাই</span>'}</td>
+        </tr>`).join('');
+        }
+
+        /* ============================================================
+           RENDERERS — TEAM PAGE
+        ============================================================ */
+        let currentTeamSquadFilter = 'playing';
+        function renderTeam(teamId) {
+            const team = teamById(teamId);
+            if (!team) { document.getElementById('teamHeader').innerHTML = '<p>দল পাওয়া যায়নি।</p>'; return; }
+            const teamFixtures = FIXTURES.filter(f => f.season === 'mpl2026' && (f.teamA === teamId || f.teamB === teamId));
+            const wins = teamFixtures.filter(f => f.status === 'completed' && f.result && f.result.startsWith(team.name)).length;
+            const played = teamFixtures.filter(f => f.status === 'completed').length;
+
+            document.getElementById('teamHeader').innerHTML = `
+        <div class="flex flex-wrap items-center gap-5">
+          <div class="w-20 h-20 rounded-full bg-gold text-pitchdark font-display font-800 text-3xl flex items-center justify-center shrink-0">${team.short}</div>
+          <div class="flex-1 min-w-[200px]">
+            <h2 class="font-display font-800 text-3xl">${team.name}</h2>
+            <p class="text-cream/70 mt-1">অধিনায়ক: ${team.captain} · এলাকা: ${team.area}</p>
+          </div>
+          <div class="flex gap-4 text-center">
+            <div><p class="font-display font-800 text-gold text-2xl">${team.playerCount}</p><p class="text-cream/60 text-xs">খেলোয়াড়</p></div>
+            <div><p class="font-display font-800 text-gold text-2xl">${played}</p><p class="text-cream/60 text-xs">ম্যাচ খেলেছে</p></div>
+            <div><p class="font-display font-800 text-gold text-2xl">${wins}</p><p class="text-cream/60 text-xs">জয়</p></div>
+          </div>
+        </div>`;
+
+            currentTeamSquadFilter = 'playing';
+            const tabs = document.getElementById('teamSquadTabs');
+            tabs.innerHTML = `
+        <button data-t="playing" class="tab-btn active px-4 py-2 rounded-full text-sm font-semibold border border-pitch/20">প্রথম একাদশ</button>
+        <button data-t="standby" class="tab-btn px-4 py-2 rounded-full text-sm font-semibold border border-pitch/20">স্ট্যান্ডবাই</button>
+        <button data-t="all" class="tab-btn px-4 py-2 rounded-full text-sm font-semibold border border-pitch/20">সম্পূর্ণ স্কোয়াড</button>`;
+            tabs.querySelectorAll('button').forEach(btn => {
+                btn.onclick = () => {
+                    tabs.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentTeamSquadFilter = btn.dataset.t;
+                    drawTeamSquad(team);
+                };
+            });
+            drawTeamSquad(team);
+
+            const mWrap = document.getElementById('teamMatchesWrap');
+            mWrap.innerHTML = teamFixtures.filter(f => f.round === 'লীগ পর্ব').map(fx => matchCardHTML(fx, false)).join('') || '<p class="text-ink/50">এই মৌসুমে এখনও কোনো ম্যাচ নির্ধারিত হয়নি।</p>';
+        }
+
+        function drawTeamSquad(team) {
+            const squad = buildSquad(team);
+            const filtered = currentTeamSquadFilter === 'all' ? squad : squad.filter(p => p.status === currentTeamSquadFilter);
+            document.getElementById('teamSquadWrap').innerHTML = `
+        <div class="overflow-x-auto rounded-2xl border border-ink/10 bg-cream shadow-sm">
+          <table class="min-w-full text-sm">
+            <thead class="bg-pitchdark text-cream">
+              <tr>
+                <th class="px-4 py-3 text-left font-display font-600">নাম</th>
+                <th class="px-4 py-3 text-left font-display font-600">ভূমিকা</th>
+                <th class="px-4 py-3 text-center font-display font-600">জার্সি</th>
+                <th class="px-4 py-3 text-center font-display font-600">ম্যাচ</th>
+                <th class="px-4 py-3 text-center font-display font-600">রান</th>
+                <th class="px-4 py-3 text-center font-display font-600">উইকেট</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-ink/10">
+              ${filtered.map(p => `
+                <tr class="hover:bg-goldlight/20">
+                  <td class="px-4 py-3 font-medium">${p.name}${p.isCaptain ? ' <span class="text-xs text-gold">(অধিনায়ক)</span>' : ''}</td>
+                  <td class="px-4 py-3">${p.role}</td>
+                  <td class="px-4 py-3 text-center">${p.jersey}</td>
+                  <td class="px-4 py-3 text-center">${p.matches}</td>
+                  <td class="px-4 py-3 text-center font-semibold text-pitch">${p.runs}</td>
+                  <td class="px-4 py-3 text-center">${p.wickets || '-'}</td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+        }
+
+        /* ============================================================
+           RENDERERS — MATCHES PAGE
+        ============================================================ */
+        let matchesSeason = 'mpl2026';
+        let matchesStatus = 'all';
+        function renderMatches(seasonParam) {
+            if (seasonParam) matchesSeason = seasonParam;
+            const sTabs = document.getElementById('matchesSeasonTabs');
+            sTabs.innerHTML = SEASONS.map(s => `<button data-s="${s.id}" class="tab-btn ${s.id === matchesSeason ? 'active' : ''} px-4 py-2 rounded-full text-sm font-semibold border border-pitch/20 bg-cream">${s.label}</button>`).join('');
+            sTabs.querySelectorAll('button').forEach(btn => btn.onclick = () => { matchesSeason = btn.dataset.s; renderMatches(); });
+
+            const stTabs = document.getElementById('matchesStatusTabs');
+            const statuses = [['all', 'সব'], ['live', 'লাইভ'], ['upcoming', 'আসন্ন'], ['completed', 'সম্পন্ন']];
+            stTabs.innerHTML = statuses.map(([k, l]) => `<button data-st="${k}" class="tab-btn ${k === matchesStatus ? 'active' : ''} px-4 py-2 rounded-full text-sm font-semibold border border-maroon/20 bg-cream">${l}</button>`).join('');
+            stTabs.querySelectorAll('button').forEach(btn => btn.onclick = () => { matchesStatus = btn.dataset.st; renderMatches(); });
+
+            let list = FIXTURES.filter(f => f.season === matchesSeason);
+            if (matchesStatus !== 'all') list = list.filter(f => f.status === matchesStatus);
+            const grid = document.getElementById('matchesGrid');
+            grid.innerHTML = list.length ? list.map(fx => matchCardHTML(fx, false)).join('') : '<p class="text-ink/50 col-span-2 text-center py-10">এই ফিল্টারে কোনো ম্যাচ পাওয়া যায়নি।</p>';
+        }
+
+        /* ============================================================
+           RENDERERS — SCORECARD PAGE
+        ============================================================ */
+        function scoreTableHTML(title, rows, type) {
+            if (!rows || !rows.length) return '';
+            if (type === 'bat') {
+                return `<p class="text-gold font-display font-600 text-sm mb-2 mt-6">${title}</p>
+        <div class="overflow-x-auto rounded-xl border border-gold/15">
+          <table class="min-w-full text-sm text-cream">
+            <thead class="bg-pitch/40 text-cream/70"><tr>
+              <th class="px-3 py-2 text-left font-display font-600">ব্যাটসম্যান</th>
+              <th class="px-3 py-2 text-center font-display font-600">রান</th>
+              <th class="px-3 py-2 text-center font-display font-600">বল</th>
+              <th class="px-3 py-2 text-center font-display font-600">৪</th>
+              <th class="px-3 py-2 text-center font-display font-600">৬</th>
+              <th class="px-3 py-2 text-center font-display font-600">স্ট্রাইক রেট</th>
+            </tr></thead>
+            <tbody class="divide-y divide-gold/10">
+              ${rows.map(r => `<tr class="${r.out ? 'text-cream/50' : ''}"><td class="px-3 py-2">${r.name}</td><td class="px-3 py-2 text-center font-semibold">${r.runs}</td><td class="px-3 py-2 text-center">${r.balls}</td><td class="px-3 py-2 text-center">${r.fours}</td><td class="px-3 py-2 text-center">${r.sixes}</td><td class="px-3 py-2 text-center">${r.sr}</td></tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+            }
+            return `<p class="text-gold font-display font-600 text-sm mb-2 mt-6">${title}</p>
+        <div class="overflow-x-auto rounded-xl border border-gold/15">
+          <table class="min-w-full text-sm text-cream">
+            <thead class="bg-pitch/40 text-cream/70"><tr>
+              <th class="px-3 py-2 text-left font-display font-600">বোলার</th>
+              <th class="px-3 py-2 text-center font-display font-600">ওভার</th>
+              <th class="px-3 py-2 text-center font-display font-600">মেডেন</th>
+              <th class="px-3 py-2 text-center font-display font-600">রান</th>
+              <th class="px-3 py-2 text-center font-display font-600">উইকেট</th>
+            </tr></thead>
+            <tbody class="divide-y divide-gold/10">
+              ${rows.map(r => `<tr><td class="px-3 py-2">${r.name}</td><td class="px-3 py-2 text-center">${r.overs}</td><td class="px-3 py-2 text-center">${r.maidens}</td><td class="px-3 py-2 text-center">${r.runs}</td><td class="px-3 py-2 text-center font-semibold text-gold">${r.wickets}</td></tr>`).join('')}
+            </tbody>
+          </table>
+        </div>`;
+        }
+
+        function squadColumnHTML(team) {
+            const squad = buildSquad(team);
+            const playing = squad.filter(p => p.status === 'playing');
+            const standby = squad.filter(p => p.status === 'standby');
+            const row = p => `<li class="flex items-center justify-between py-1.5 border-b border-gold/10 text-sm"><span>${p.name}${p.isCaptain ? ' <span class="text-gold text-xs">(অধি.)</span>' : ''}</span><span class="text-cream/50 text-xs">${p.role} · #${p.jersey}</span></li>`;
+            return `<div class="bg-pitchdeep rounded-2xl border border-gold/20 p-5 flex-1 min-w-[260px]">
+        <h4 class="font-display font-700 text-gold mb-3">${team.name}</h4>
+        <p class="text-cream/60 text-xs mb-1 uppercase tracking-wide">প্রথম একাদশ</p>
+        <ul class="mb-4">${playing.map(row).join('')}</ul>
+        <p class="text-cream/60 text-xs mb-1 uppercase tracking-wide">স্ট্যান্ডবাই</p>
+        <ul>${standby.map(row).join('')}</ul>
+      </div>`;
+        }
+
+        function renderScorecard(matchId) {
+            const fx = fixtureById(matchId);
+            const wrap = document.getElementById('scorecardWrap');
+            if (!fx) { wrap.innerHTML = '<p class="text-cream">ম্যাচ পাওয়া যায়নি।</p>'; return; }
+            const nameA = matchTeamLabel(fx, 'A');
+            const nameB = matchTeamLabel(fx, 'B');
+            const teamA = fx.teamA ? teamById(fx.teamA) : null;
+            const teamB = fx.teamB ? teamById(fx.teamB) : null;
+
+            let html = `
+        <div class="text-center mb-8">
+          <p class="text-gold font-semibold tracking-widest text-xs">${fx.round}${seasonById(fx.season) ? ' · ' + seasonById(fx.season).label : ''}</p>
+          <h2 class="font-display font-700 text-3xl text-cream mt-1">${nameA && nameB ? nameA + ' বনাম ' + nameB : (fx.label || '')}</h2>
+          <p class="text-cream/50 text-sm mt-2">${fx.date}${fx.time ? ', ' + fx.time : ''} · ${fx.venue}</p>
+          <div class="mt-3">${statusBadge(fx.status)}</div>
+        </div>`;
+
+            if (fx.scoreA || fx.scoreB) {
+                html += `<div class="bg-pitchdeep rounded-3xl border border-gold/25 p-6 sm:p-8 mb-8">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div><p class="text-cream font-display font-700 text-xl">${nameA || ''}</p>${fx.scoreA ? `<p class="font-display font-800 text-gold text-3xl mt-1">${fx.scoreA}</p>` : ''}</div>
+            <p class="font-display text-cream/40">বনাম</p>
+            <div class="text-right"><p class="text-cream font-display font-700 text-xl">${nameB || ''}</p>${fx.scoreB ? `<p class="font-display font-800 text-gold text-3xl mt-1">${fx.scoreB}</p>` : ''}</div>
+          </div>
+          ${fx.result ? `<p class="text-center text-gold font-semibold mt-4">${fx.result}</p>` : ''}
+          ${fx.detail ? scoreTableHTML('ব্যাটিং — ' + (nameA || ''), fx.detail.battingA, 'bat') : ''}
+          ${fx.detail ? scoreTableHTML('বোলিং — ' + (nameB || ''), fx.detail.bowlingB, 'bowl') : ''}
+          ${fx.detail && fx.detail.battingB ? scoreTableHTML('ব্যাটিং — ' + (nameB || ''), fx.detail.battingB, 'bat') : ''}
+          ${fx.detail && fx.detail.bowlingA ? scoreTableHTML('বোলিং — ' + (nameA || ''), fx.detail.bowlingA, 'bowl') : ''}
+          ${!fx.detail && fx.status === 'completed' ? '<p class="text-cream/50 text-sm text-center mt-6">এই ম্যাচের বল-বাই-বল স্কোরকার্ড সংরক্ষিত নেই — চূড়ান্ত ফলাফল উপরে দেখুন।</p>' : ''}
+        </div>`;
+            } else if (fx.status === 'upcoming') {
+                html += `<p class="text-center text-cream/50 mb-8">খেলা এখনও শুরু হয়নি — লাইভ স্কোর শুরু হলে এখানে আপডেট হবে।</p>`;
+            }
+
+            if (teamA && teamB) {
+                html += `<div class="mb-4"><h3 class="font-display font-700 text-2xl text-cream mb-4 text-center">উভয় দলের স্কোয়াড</h3>
+          <div class="flex flex-wrap gap-5 justify-center">${squadColumnHTML(teamA)}${squadColumnHTML(teamB)}</div></div>`;
+            }
+
+            wrap.innerHTML = html;
+        }
+
+        /* ============================================================
+           RENDERERS — FIXTURES PAGE
+        ============================================================ */
+        let fixturesSeason = 'mpl2026';
+        function renderFixtures(seasonParam) {
+            if (seasonParam) fixturesSeason = seasonParam;
+            const tabs = document.getElementById('fixturesSeasonTabs');
+            tabs.innerHTML = SEASONS.map(s => `<button data-s="${s.id}" class="tab-btn ${s.id === fixturesSeason ? 'active' : ''} px-4 py-2 rounded-full text-sm font-semibold border border-pitch/20 bg-cream">${s.label}</button>`).join('');
+            tabs.querySelectorAll('button').forEach(btn => btn.onclick = () => { fixturesSeason = btn.dataset.s; renderFixtures(); });
+            renderFixtureRounds(fixturesSeason, document.getElementById('fixturesWrap'));
+        }
+
+        /* ============================================================
+           RENDERERS — TOURNAMENT DETAIL PAGE
+        ============================================================ */
+        function renderTournament(seasonId) {
+            const s = seasonById(seasonId);
+            const header = document.getElementById('tournamentHeader');
+            if (!s) { header.innerHTML = '<p>টুর্নামেন্ট পাওয়া যায়নি।</p>'; return; }
+            header.innerHTML = `
+        <span class="inline-block text-xs font-semibold ${s.status === 'চলমান' ? 'text-maroon bg-maroon/10' : 'text-ink/50 bg-ink/5'} px-2.5 py-0.5 rounded-full mb-3">${s.status}</span>
+        <h2 class="font-display font-800 text-3xl sm:text-4xl">${s.label}</h2>
+        <p class="text-ink/60 mt-2">${s.teamsCount}টি দল অংশগ্রহণ করেছে · মোট ${s.matchesCount}টি ম্যাচ</p>
+        <p class="text-ink/60">চ্যাম্পিয়ন: <span class="font-semibold text-maroon">${s.champion || 'নির্ধারিত হয়নি'}</span></p>`;
+            renderFixtureRounds(seasonId, document.getElementById('tournamentFixturesWrap'));
+        }
+
+        /* ============================================================
+           ROUTER
+        ============================================================ */
+        function go(page, param) {
+            location.hash = '#' + page + (param ? '/' + encodeURIComponent(param) : '');
+        }
+
+        const HOME_ANCHORS = ['home', 'teams', 'playersPreview', 'matchesPreview', 'scoreboard', 'points', 'fixturesPreview', 'tournaments', 'committee'];
+
+        function route() {
+            const raw = location.hash.replace('#', '') || 'home';
+            const [page, param] = raw.split('/').map(s => decodeURIComponent(s || ''));
+
+            document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
+
+            if (HOME_ANCHORS.includes(page)) {
+                document.getElementById('page-home').classList.remove('hidden');
+                renderHomeSummaries();
+                if (page !== 'home') {
+                    setTimeout(() => { const el = document.getElementById(page); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 30);
+                } else {
+                    window.scrollTo({ top: 0 });
+                }
+                return;
+            }
+
+            const target = document.getElementById('page-' + page);
+            if (!target) { document.getElementById('page-home').classList.remove('hidden'); renderHomeSummaries(); return; }
+            target.classList.remove('hidden');
+            window.scrollTo({ top: 0 });
+
+            if (page === 'players') renderPlayers();
+            else if (page === 'team') renderTeam(param);
+            else if (page === 'matches') renderMatches(param || undefined);
+            else if (page === 'scorecard') renderScorecard(param);
+            else if (page === 'fixtures') renderFixtures(param || undefined);
+            else if (page === 'tournament') renderTournament(param);
+        }
+
+        window.addEventListener('hashchange', route);
+        window.addEventListener('DOMContentLoaded', route);
+
+        // ---------- mobile menu ----------
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // ---------- modals ----------
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        document.querySelectorAll('.modal-overlay').forEach(function (overlay) {
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) closeModal(overlay.id);
+            });
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay').forEach(function (overlay) {
+                    if (!overlay.classList.contains('hidden')) closeModal(overlay.id);
+                });
+            }
+        });
+
+        // ---------- form submit ----------
+        function submitForm(event, type) {
+            event.preventDefault();
+            const modalId = type === 'team' ? 'teamModal' : 'playerModal';
+            closeModal(modalId);
+            event.target.reset();
+            showToast(type === 'team' ? '✅ দল সফলভাবে নিবন্ধিত হয়েছে!' : '✅ খেলোয়াড় সফলভাবে নিবন্ধিত হয়েছে!');
+            return false;
+        }
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('hidden');
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(function () {
+                toast.classList.add('hidden');
+            }, 3200);
+        }
+
+        // ---------- carousel ----------
+        const track = document.getElementById('carouselTrack');
+        const slideCount = track.children.length;
+        let currentSlide = 0;
+        const dotsWrap = document.getElementById('carouselDots');
+        for (let i = 0; i < slideCount; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'w-2.5 h-2.5 rounded-full bg-cream/60 hover:bg-gold transition';
+            dot.setAttribute('aria-label', 'ছবি ' + (i + 1));
+            dot.onclick = () => goToSlide(i);
+            dotsWrap.appendChild(dot);
+        }
+        function updateDots() {
+            Array.from(dotsWrap.children).forEach((d, i) => {
+                d.classList.toggle('bg-gold', i === currentSlide);
+                d.classList.toggle('bg-cream/60', i !== currentSlide);
+            });
+        }
+        function goToSlide(i) {
+            currentSlide = (i + slideCount) % slideCount;
+            track.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+            updateDots();
+        }
+        function moveSlide(dir) { goToSlide(currentSlide + dir); }
+        updateDots();
+        let autoSlide = setInterval(() => moveSlide(1), 4500);
+        track.parentElement.addEventListener('mouseenter', () => clearInterval(autoSlide));
+        track.parentElement.addEventListener('mouseleave', () => { autoSlide = setInterval(() => moveSlide(1), 4500); });
+    </script>
+</body>
+
+</html>

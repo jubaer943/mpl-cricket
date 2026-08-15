@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Player;
+use App\Models\MatchPlayerStat;
+use App\Models\Team;
+use App\Services\PlayerPerformanceService;
+use Illuminate\Support\Facades\DB;
 
 class PlayerController extends Controller
 {
@@ -68,5 +72,13 @@ class PlayerController extends Controller
         Player::create($validatedData);
 
         return redirect()->back()->with('success', 'আপনার প্লেয়ার নিবন্ধন সফলভাবে জমা নেওয়া হয়েছে। অ্যাডমিন প্যানেল থেকে ভেরিফাই করে অনুমোদন দেওয়া হবে।');
+    }
+
+
+    public function topPerformer(PlayerPerformanceService $service)
+    {
+        $playerData = $service->getDashboardData(null);
+
+        return view('top-performers', $playerData);
     }
 }

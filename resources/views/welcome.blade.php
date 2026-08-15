@@ -5,12 +5,15 @@
         <x-partials.gallery />
         <x-partials.registration-promt />
         <x-partials.team :teams="$teams" />
-        <x-partials.top-performer :players="$players" />
+        <x-partials.top-performer />
         <x-partials.matches />
         <x-partials.point-table />
         <x-partials.tournament :tournaments="$tournaments" />
         <x-partials.fixture />
         <x-partials.committee />
     </div>
-
+    <script>
+        window.playersData = @json($playerData['topPerformers'] ?? []);
+    </script>
+    <script src="{{ asset('js/players/performance-table.js') }}"></script>
 </x-layouts.master>
