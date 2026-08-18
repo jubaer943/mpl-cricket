@@ -23,10 +23,10 @@ class HomeController extends Controller
             ->withCount('teams')
             ->latest()
             ->get();
-
+        $playerTotal = Player::all()->count();
         $playerData = $service->getDashboardData(10);
 
 
-        return view('welcome', compact('teams', 'tournaments', 'playerData'));
+        return view('welcome', compact('teams', 'tournaments', 'playerData', 'playerTotal'));
     }
 }

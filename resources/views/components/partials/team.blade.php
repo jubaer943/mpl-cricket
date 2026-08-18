@@ -30,7 +30,8 @@
             </p>
 
             {{-- Action Link --}}
-            <p class="text-gold text-xs font-semibold mt-3">বিস্তারিত দেখুন →</p>
+            <a href="{{ route('tournament.fixture')}}" class="text-gold text-xs font-semibold mt-3">বিস্তারিত দেখুন
+                →</a>
         </a>
         @endforeach
     </div>

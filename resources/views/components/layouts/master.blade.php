@@ -44,6 +44,12 @@
     </main>
 
     <x-layouts.footer />
+
+    <script>
+        function toggleMenu() {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+    </script>
 </body>
 
 </html>

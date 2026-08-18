@@ -34,3 +34,7 @@ Route::get('player/performance', [PlayerController::class, 'topPerformer'])->nam
 
 Route::get('/live-draft', [PublicAuctionController::class, 'index']);
 Route::get('/api/live-draft-data', [PublicAuctionController::class, 'getLiveAuctionData']);
+
+Route::get('fixture', function () {
+    return view('fixture');
+})->name('tournament.fixture');

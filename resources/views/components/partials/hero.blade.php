@@ -38,7 +38,7 @@
                 <p class="text-cream/70 text-sm mt-1">অংশগ্রহণকারী দল</p>
             </div>
             <div class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">
-                <p class="font-display font-800 text-gold text-3xl">০+</p>
+                <p class="font-display font-800 text-gold text-3xl">{{ $playerTotal }}+</p>
                 <p class="text-cream/70 text-sm mt-1">নিবন্ধিত খেলোয়াড়</p>
             </div>
             <div class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">

@@ -1,7 +1,7 @@
 <x-layouts.master>
 
     <div id="page-home" class="page">
-        <x-partials.hero />
+        <x-partials.hero :playerTotal="$playerTotal" />
         <x-partials.gallery />
         <x-partials.registration-promt />
         <x-partials.team :teams="$teams" />
