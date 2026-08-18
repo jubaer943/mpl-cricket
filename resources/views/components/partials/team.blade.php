@@ -7,7 +7,7 @@
 
     <div id="teamGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         @foreach ($teams as $team)
-        <a href=""
+        <a href="{{ route('tournament.fixture')}}"
             class="block bg-pitchdark rounded-2xl p-5 text-cream border border-gold/20 hover:-translate-y-1 hover:border-gold transition cursor-pointer">
 
             <div
@@ -30,8 +30,7 @@
             </p>
 
             {{-- Action Link --}}
-            <a href="{{ route('tournament.fixture')}}" class="text-gold text-xs font-semibold mt-3">বিস্তারিত দেখুন
-                →</a>
+            <p class="text-gold text-xs font-semibold mt-3">বিস্তারিত দেখুন →</p>
         </a>
         @endforeach
     </div>
