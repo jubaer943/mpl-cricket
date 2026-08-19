@@ -85,7 +85,6 @@ class PlayerController extends Controller
     public function registerPlayer()
     {
         $players = Player::with('category')
-            ->where('status', 'approved')
             ->get();
 
         return view('register-player', compact('players'));
