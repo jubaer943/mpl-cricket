@@ -27,8 +27,7 @@ Route::get('commitee', function () {
 })->name('commitee');
 
 Route::get('player/performance', [PlayerController::class, 'topPerformer'])->name('player.performance');
-
-
+Route::get('register/player', [PlayerController::class, 'registerPlayer'])->name('register.player');
 
 
 

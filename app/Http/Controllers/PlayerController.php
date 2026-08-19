@@ -81,4 +81,13 @@ class PlayerController extends Controller
 
         return view('top-performers', $playerData);
     }
+
+    public function registerPlayer()
+    {
+        $players = Player::with('category')
+            ->where('status', 'approved')
+            ->get();
+
+        return view('register-player', compact('players'));
+    }
 }

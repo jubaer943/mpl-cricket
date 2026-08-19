@@ -12,12 +12,10 @@
 
           <nav class="hidden lg:flex items-center gap-5 text-cream/90 text-[15px] font-medium">
               <a href="{{ route('home') }}" class="hover:text-gold transition">হোম</a>
-              <a href="#teams" class="hover:text-gold transition">দলসমূহ</a>
-              <a href="#playersPreview" class="hover:text-gold transition">খেলোয়াড়</a>
-              <a href="#matches" class="hover:text-gold transition">ম্যাচ</a>
-              <a href="#scoreboard" class="hover:text-gold transition">স্কোরবোর্ড</a>
-              <a href="#points" class="hover:text-gold transition">পয়েন্ট টেবিল</a>
-              <a href="#fixtures" class="hover:text-gold transition">ফিক্সচার</a>
+              <a href="{{ route('home') }}#teams" class="hover:text-gold transition">দলসমূহ</a>
+              <a href="{{ route('home') }}#playersPreview" class="hover:text-gold transition">খেলোয়াড়</a>
+              <a href="{{ route('home') }}#points" class="hover:text-gold transition">পয়েন্ট টেবিল</a>
+              <a href="{{ route('tournament.fixture') }}" class="hover:text-gold transition">ফিক্সচার</a>
               <a href="{{ route('commitee') }}" class="hover:text-gold transition">একতা যব সংঘ পরিষদ
               </a>
               <a href="{{ route('commitee.mpl') }}" class="hover:text-gold transition">MPL পরিচালনা পষর্দ</a>
@@ -45,7 +43,7 @@
               <a href="#matches" onclick="toggleMenu()" class="hover:text-gold">ম্যাচ</a>
               <a href="#scoreboard" onclick="toggleMenu()" class="hover:text-gold">স্কোরবোর্ড</a>
               <a href="#points" onclick="toggleMenu()" class="hover:text-gold">পয়েন্ট টেবিল</a>
-              <a href="#fixtures" onclick="toggleMenu()" class="hover:text-gold">ফিক্সচার</a>
+              <a href="{{ route('tournament.fixture') }}" onclick="toggleMenu()" class="hover:text-gold">ফিক্সচার</a>
               <a href="#tournaments" onclick="toggleMenu()" class="hover:text-gold">টুর্নামেন্ট</a>
               <a href="{{ route('commitee') }}" onclick="toggleMenu()" class="hover:text-gold">একতা যব সংঘ পরিষদ</a>
               <a href="{{ route('commitee.mpl') }}" onclick="toggleMenu()" class="hover:text-gold">MPL পরিচালনা

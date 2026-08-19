@@ -6,11 +6,11 @@
         <x-partials.registration-promt />
         <x-partials.team :teams="$teams" />
         <x-partials.top-performer />
-        <x-partials.matches />
+        {{-- <x-partials.matches /> --}}
         <x-partials.point-table />
         <x-partials.tournament :tournaments="$tournaments" />
-        <x-partials.fixture />
-        <x-partials.committee />
+        {{-- <x-partials.fixture /> --}}
+        {{-- <x-partials.committee /> --}}
     </div>
     <script>
         window.playersData = @json($playerData['topPerformers'] ?? []);

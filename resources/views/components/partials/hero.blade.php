@@ -23,24 +23,24 @@
             একসাথে খেলি, একসাথে গড়ি সুস্থ শরীর সুন্দর সমাজ
         </p>
         <div class="rise rise-3 flex flex-wrap gap-4 justify-center mt-8">
-            <a href="{{ route('team.register')}}"
+            <a href="{{ route('team.register') }}"
                 class="px-7 py-3 rounded-full bg-gold text-pitchdark font-bold hover:bg-goldlight transition shadow-lg shadow-black/20">দল
                 নিবন্ধন করুন</a>
-            <a href="{{ route('player.register')}}"
+            <a href="{{ route('player.register') }}"
                 class="px-7 py-3 rounded-full border-2 border-cream/40 text-cream font-bold hover:border-gold hover:text-gold transition">খেলোয়াড়
                 নিবন্ধন করুন</a>
         </div>
 
         <!-- stat tiles -->
         <div class="rise rise-4 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto mt-14">
-            <div class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">
+            <a href="#teams" class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">
                 <p class="font-display font-800 text-gold text-3xl">6</p>
                 <p class="text-cream/70 text-sm mt-1">অংশগ্রহণকারী দল</p>
-            </div>
-            <div class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">
+            </a>
+            <a href="{{ route('register.player') }}" class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">
                 <p class="font-display font-800 text-gold text-3xl">{{ $playerTotal }}+</p>
                 <p class="text-cream/70 text-sm mt-1">নিবন্ধিত খেলোয়াড়</p>
-            </div>
+            </a>
             <div class="bg-pitchdeep/60 border border-gold/25 rounded-2xl py-5">
                 <p class="font-display font-800 text-gold text-3xl">0</p>
                 <p class="text-cream/70 text-sm mt-1">মোট ম্যাচ</p>
